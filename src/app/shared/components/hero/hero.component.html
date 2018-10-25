@@ -1,2 +1,9 @@
-<div class="hero" [ngStyle]="{ 'background-image': 'url(' + img + ')' }">
+<div 
+  class="hero"
+  ngClass.gt-sm="hero--gt-sm" 
+  [ngStyle]="{ 'background-image': 'url(' + img + ')' }"
+  fxLayout="row"
+  fxLayoutAlign="start center" 
+>
+  <h1>{{ title }}</h1>
 </div>

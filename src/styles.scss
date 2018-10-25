@@ -1,4 +1,5 @@
 @import './scss/base';
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
 
 $dark-primary-text: rgba(black, 0.87);
 
@@ -46,3 +47,7 @@ $warn: mat-palette($mat-red, 400);
 $theme: mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
+
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }

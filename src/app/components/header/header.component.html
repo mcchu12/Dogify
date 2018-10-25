@@ -1,9 +1,30 @@
-<header class="navbar">
-  <h2 class="logo"><a routerLink="/">D.</a></h2>
-  <nav class='nav'>
-    <a routerLink="/services">Services</a>
+<header 
+  class="navbar" 
+  ngClass.gt-sm="navbar--gt-sm"
+  fxLayout="row"
+  fxLayoutAlign="start center"
+>
+
+  <button class="menu-toggle" fxShow fxHide.gt-sm (click)="toggle()">
+    <fa-icon [icon]="icMenu"></fa-icon>
+  </button>
+  
+  <h2 ngClass="text-center" ngClass.gt-sm="text-left" fxFlex="2 1 auto"><a routerLink="/">D.</a></h2>
+  
+  <nav 
+    [ngClass]="{'nav--overlay': true, 'nav--overlay-expand': menuToggle}"
+    [ngClass.gt-sm]="{'nav--overlay': false, 'nav': true}"
+  >
+    <a routerLink="/services" (click)="toggle()">Services</a>
     <a routerLink="/breeds">Breeds</a>
     <a routerLink="/">Tools</a>
     <a routerLink="/blog">Blog</a>
   </nav>
+
+  <button class="sidebar-toggle">
+      <fa-icon [icon]="icMore"></fa-icon>
+  </button>
+
+  
+
 </header>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { kBaseImgUrl } from '../../constants';
@@ -9,9 +9,7 @@ import { kBaseImgUrl } from '../../constants';
   styleUrls: ['./hero.component.scss']
 })
 export class HeroComponent implements OnInit {
-
-  // @Input('imgName') img: string;
-
+  @Input() title: string;
   img: string;
 
   constructor(private router: Router) {

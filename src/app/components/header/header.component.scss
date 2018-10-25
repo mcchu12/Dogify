@@ -1,27 +1,39 @@
-@import '../../../scss/mixins';
-
 .navbar {
   width: 100%;
+  padding: 0 5vw;
   position: fixed;
   top: 0;
   z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  color: white;
 }
 
-.logo {
-  margin-left: 1em;
+.navbar--gt-sm {
+  width: 50%;
 }
 
 .nav {
   a {
-    margin-right: 1em;
+    margin-right: 1.5em;
   }
 }
 
-@include mq(medium) {
-  .navbar {
-    width: 50%;
-  }
+.logo {
+  text-align: center;
 }
+
+.nav--overlay {
+  width: 0;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: width 500ms;
+}
+
+.nav--overlay-expand {
+  width: 100%;
+}
+
