@@ -11,17 +11,13 @@
   width: 50%;
 }
 
-.nav {
+.nav--gt-sm {
   a {
     margin-right: 1.5em;
   }
 }
 
-.logo {
-  text-align: center;
-}
-
-.nav--overlay {
+.nav {
   width: 0;
   height: 100%;
   position: fixed;
@@ -33,7 +29,31 @@
   transition: width 500ms;
 }
 
-.nav--overlay-expand {
+.nav--expand {
   width: 100%;
 }
 
+.nav__links {
+  width: 100%;
+  position: relative;
+  top: 25%;
+  text-align: center;
+  font-size: 1.777em;
+
+  & a {
+    display: block;
+  }
+}
+
+.btn-close {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-weight: 700;
+  font-size: 3em;
+}
+
+
+.logo {
+  text-align: center;
+}

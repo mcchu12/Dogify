@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { faBars, faEllipsisV, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,6 +7,8 @@ import { faBars, faEllipsisV, IconDefinition } from '@fortawesome/free-solid-svg
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  @ViewChild('nav') nav;
 
   menuToggle = false;
   sidebarToggle = false;
@@ -22,8 +24,12 @@ export class HeaderComponent implements OnInit {
     this.icMore = faEllipsisV;
   }
 
-  toggle() {
-    this.menuToggle = !this.menuToggle;
+  // Check if nav has overlay class before adding expanding class
+  toggleMenu() {
+    if (this.nav.nativeElement.classList.contains('nav')) {
+      this.menuToggle = !this.menuToggle;
+      console.log('Toggle: ', this.menuToggle);
+    }
   }
 
 }
