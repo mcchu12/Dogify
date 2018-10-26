@@ -1,53 +1,18 @@
-@import './scss/base';
+@import 'global';
 @import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
-
-$dark-primary-text: rgba(black, 0.87);
-
-$mat-white: (
-  50: #ffffff,
-  100: #ffffff,
-  200: #ffffff,
-  300: #ffffff,
-  400: #ffffff,
-  500: #ffffff,
-  600: #ffffff,
-  700: #ffffff,
-  800: #ffffff,
-  900: #ffffff,
-  A100: #ffffff,
-  A200: #ffffff,
-  A400: #ffffff,
-  A700: #ffffff,
-  contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $dark-primary-text,
-    700: $dark-primary-text,
-    800: $dark-primary-text,
-    900: $dark-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
-  )
-);
-
-@import '~@angular/material/theming';
-
-@include mat-core();
-
-$primary: mat-palette($mat-white);
-$accent:  mat-palette($mat-grey, 800);
-$warn: mat-palette($mat-red, 400);
-
-$theme: mat-light-theme($primary, $accent, $warn);
-
-@include angular-material-theme($theme);
-
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans:800|PT+Sans');
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
 
 .text-center { text-align: center; }
 .text-left { text-align: left; }
+
+.main {
+  min-height: 50vh;
+  padding: 2vh 5vw;
+  overflow: auto;
+}
+
+.main--gt-sm {
+  margin-left: 50%;
+  min-height: 100vh;
+}

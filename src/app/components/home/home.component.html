@@ -1,11 +1,21 @@
 <app-hero></app-hero>
-<app-page-content>
-  <div>
-      <h1>Dogify</h1>
+<main
+  class="main" 
+  ngClass.gt-sm="main--gt-sm"
+  fxLayout="column"
+  fxLayoutAlign="start start"
+>
+  <div class="home-content" fxFlex="2 1 auto" fxLayout="column" fxLayoutAlign="center">
+      <h1 class="headline--primary">Dogify</h1>
       <p>
         We get it - dog is a important member of the family. More often than not, 
         as pet parents, you may be too occupied with work that you do not have time to take care of your precious babies. 
         At Dogify, we connect you with other pet lovers who you can keep your dog happy, healthy, and sweet as ever.
       </p>
   </div>
-</app-page-content>
+
+  <div class="quote" fxFlexAlign="end">
+    <fa-icon [icon]="icPaw"></fa-icon>
+    <span>Where dog meet human</span> 
+  </div>
+</main>

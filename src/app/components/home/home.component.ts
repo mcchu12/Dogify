@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faPaw, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  vh: any;
+  icPaw: IconDefinition;
 
   constructor() { }
 
   ngOnInit() {
+    this.icPaw = faPaw;
   }
 
 }

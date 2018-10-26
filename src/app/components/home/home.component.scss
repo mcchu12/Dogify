@@ -1,0 +1,20 @@
+.headline--primary {
+    margin-bottom: 0;
+}
+
+// TODO: Change to other value in stead of fixed px
+.home-content {
+    max-width: 450px;
+}
+
+.quote {
+    margin-top: 3em;
+    font-size: 0.75em;
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+
+    span {
+        margin-left: 0.5em;
+    }
+}

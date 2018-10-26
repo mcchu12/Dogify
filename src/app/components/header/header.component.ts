@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit {
   toggleMenu() {
     if (this.nav.nativeElement.classList.contains('nav')) {
       this.menuToggle = !this.menuToggle;
-      console.log('Toggle: ', this.menuToggle);
     }
   }
 
