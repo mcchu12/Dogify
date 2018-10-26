@@ -14,6 +14,7 @@ import { BlogComponent } from './components/blog/blog.component';
 import { HeroComponent } from './shared/components/hero/hero.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
+import { PageContentComponent } from './shared/components/page-content/page-content.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HeaderComponent } from './components/header/header.component';
     BlogComponent,
     HeroComponent,
     HeaderComponent,
+    PageContentComponent,
   ],
   imports: [
     BrowserModule,
