@@ -1,6 +1,8 @@
+@import 'variables';
+
 .navbar {
   width: 100%;
-  padding: 0 5vw;
+  padding: 1em 5vw;
   position: fixed;
   top: 0;
   z-index: 10;
@@ -9,6 +11,13 @@
 
 .navbar--gt-sm {
   width: 50%;
+}
+
+.navbar--dark {
+  background-color: $white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  color: $black;
+  transition: background-color 100ms ease-in-out; 
 }
 
 .nav--gt-sm {
@@ -25,7 +34,6 @@
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.9);
-  font-family: Georgia, 'Times New Roman', Times, serif;
   overflow-x: hidden;
   transition: width 500ms;
 }
@@ -40,6 +48,7 @@
   top: 25%;
   text-align: center;
   font-size: 1.777em;
+  color: $white;
 
   & a {
     display: block;
@@ -52,6 +61,7 @@
   right: 5%;
   font-weight: 700;
   font-size: 3em;
+  color: $white;
 }
 
 

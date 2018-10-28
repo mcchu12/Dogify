@@ -1,6 +1,5 @@
 @import 'global';
 @import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
-// @import url('https://fonts.googleapis.com/css?family=Open+Sans:800|PT+Sans');
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
 
 .text-center { text-align: center; }
@@ -8,7 +7,7 @@
 
 .main {
   min-height: 50vh;
-  padding: 2vh 5vw;
+  padding: 5vh 5vw;
   overflow: auto;
 }
 
