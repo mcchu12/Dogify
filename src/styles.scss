@@ -6,8 +6,8 @@
 .text-left { text-align: left; }
 
 .main {
+  padding: 0 5vw;
   min-height: 50vh;
-  padding: 5vh 5vw;
   overflow: auto;
 }
 
@@ -17,6 +17,6 @@
 }
 
 .btn {
-  padding: 1em 3em;
-  border-radius: 8px;
+  padding: 1em 4em;
+  border-radius: 6px;
 }

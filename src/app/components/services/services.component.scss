@@ -1,5 +1,9 @@
 @import 'variables';
 
+.service-content {
+    margin: 2em 0;
+}
+
 .service-content--gt-xs {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -13,8 +17,13 @@
 }
 
 .btn--dark {
-    margin: 3em auto;
+    margin: 2em 0 3em;
     display: block;
     background-color: $black;
     color: $white;
+}
+
+.btn--dark--gt-xs {
+    margin-left: auto;
+    margin-right: auto;
 }
