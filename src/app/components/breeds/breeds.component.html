@@ -12,7 +12,10 @@
     when meeting a four-legged stranger: 
     <strong>what kind of good pup is that?</strong>
   </p>
-  <img class="img-preview" src="../../../assets/img/poodle.jpg" alt="preview image">
+  <button mat-fab class="fab" (click)="imgPicker.click()">+</button>
+  <div class="preview"  [ngClass]="{'fade': change}" fxLayout="column" fxLayoutAlign="center">
+    <img class="img-preview" src="../../../assets/img/poodle.jpg" alt="preview image">
+  </div>
   <input #imgPicker fxHide type="file" (change)="onImgSelected($event)">
-  <button class="btn btn--dark" ngClass.gt-xs="btn--dark--gt-xs" (click)="imgPicker.click()">Pick an image</button>
+  
 </main>

@@ -1,6 +1,23 @@
+@import 'variables';
+
+.preview {
+    min-height: 50vh;
+}
+
 .img-preview {
     width: 50%;
     height: auto;
     margin: 1em auto;
     display: block;
+    transition: all 500ms;
+}
+
+.fab {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}
+
+.fade {
+    opacity: 0;
 }

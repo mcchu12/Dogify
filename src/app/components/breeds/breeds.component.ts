@@ -9,6 +9,7 @@ export class BreedsComponent implements OnInit {
 
   title = 'Breeds';
   preview: ElementRef;
+  change: Boolean = false;
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
@@ -17,10 +18,12 @@ export class BreedsComponent implements OnInit {
   }
 
   onImgSelected(event) {
+    this.change = true;
     const reader = new FileReader();
     reader.onload = () => {
       const dataUrl = reader.result.toString();
       this.renderer.setAttribute(this.preview, 'src', dataUrl);
+      this.change = false;
     };
 
     reader.readAsDataURL(event.target.files[0]);
