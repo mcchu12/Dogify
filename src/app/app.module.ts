@@ -16,6 +16,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { PageContentComponent } from './shared/components/page-content/page-content.component';
 
+import { BreedClassificationService } from './services/breed-classification.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,9 @@ import { PageContentComponent } from './shared/components/page-content/page-cont
   exports: [
     MatIconModule
   ],
-  providers: [],
+  providers: [
+    BreedClassificationService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 @import 'global';
+@import 'theme';
 @import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
 
@@ -19,4 +20,16 @@
 .btn {
   padding: 1em 4em;
   border-radius: 6px;
+}
+
+.btn--dark {
+  margin: 2em 0 3em;
+  display: block;
+  background-color: $black;
+  color: $white;
+}
+
+.btn--dark--gt-xs {
+  margin-left: auto;
+  margin-right: auto;
 }
