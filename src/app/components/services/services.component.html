@@ -1,1 +1,49 @@
 <app-hero [title]="title"></app-hero>
+<main 
+  class="main" 
+  ngClass.gt-sm="main--gt-sm"
+>
+  <div class="service-content" ngClass.gt-xs="service-content--gt-xs">
+    
+    <div class="service">
+      <fa-icon [icon]="icRoute"></fa-icon>
+      <h4>Dog Walking</h4>
+      <p>
+        Whenever your dog needs a walk.
+        Services are available 7 days a week.
+        You can choose from potty breaks to adventure walks.
+      </p>
+    </div>
+
+  <div class="service">
+      <fa-icon [icon]="icBone"></fa-icon>
+    <h4>Tricks Training</h4>
+    <p>
+      Our expert trainers will teach your babies new cool
+      tricks to impress your friends. Available in sessions or packages.
+    </p>
+  </div>
+
+  <div class="service">
+      <fa-icon [icon]="icHome"></fa-icon>
+    <h4>House Sitting</h4>
+    <p>
+      Just because your leaving home; doesn't mean your pet has to! 
+      Leave them in the comfort of their own home and we will come visit!
+    </p>
+  </div>
+
+  <div class="service">
+    <fa-icon [icon]="icSuitcase"></fa-icon>
+    <h4>Pet Boarding</h4>
+    <p>
+      A home away from home. Your dog will stay with one 
+      of our sitters in a family environment. 
+      Your babes will be taken care of from A to Z.
+    </p>
+  </div>
+  </div>
+
+  <button class="btn btn--dark">Book a Service</button>
+
+</main>

@@ -18,20 +18,15 @@ export class HeaderComponent implements OnInit {
   icMenu: IconDefinition;
   icMore: IconDefinition;
 
-  heroHeight: number;
-  windowWidth: number;
-
+  navbarHeight: number;
   navDark: boolean;
 
   constructor(@Inject(DOCUMENT) private document: Document) {
-    this.heroHeight = window.innerHeight / 2 - 80;
-    this.windowWidth = window.innerWidth;
   }
 
   ngOnInit() {
     this.icMenu = faBars;
     this.icMore = faEllipsisV;
-    console.log('Hero height: ', this.heroHeight);
   }
 
   // Check if nav has overlay class before adding expanding class
@@ -43,11 +38,15 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    const pos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const pos = window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
+    const heroHeight = window.innerHeight / 2 - 70;
+    const windowWidth = window.innerWidth;
     // Check scroll position and window width
-    if (pos > this.heroHeight && this.windowWidth < 960) {
+    if (pos > heroHeight && windowWidth < 960) {
       this.navDark = true;
-    } else { this. navDark = false; }
+    } else if (pos < heroHeight && windowWidth < 960) {
+      this.navDark = false;
+    }
   }
 
 }
