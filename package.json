@@ -27,7 +27,12 @@
     "@fortawesome/fontawesome-free": "^5.4.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.6",
     "@fortawesome/free-solid-svg-icons": "^5.4.1",
+    "@tensorflow/tfjs": "^0.13.3",
+    "@tensorflow/tfjs-node": "^0.1.19",
     "core-js": "^2.5.4",
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
+    "ngx-restangular": "^3.0.0",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },

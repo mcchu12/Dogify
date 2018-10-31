@@ -1,3 +1,29 @@
 .page {
   position: relative;
 }
+
+// Prompt users to change to landscape mode
+// on tablet screen size and up
+// since the design does not look great on
+// this portrait orientaion
+
+// TODO: It could be great if there is a way to force landscape mode like on native app 
+.change-orientation {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  color: white;
+}
+
+.change-orientation h3 {
+  position: relative;
+  top: 50%;
+  text-align: center;
+  color: white;
+}

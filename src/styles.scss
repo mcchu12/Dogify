@@ -7,7 +7,7 @@
 .text-left { text-align: left; }
 
 .main {
-  padding: 0 5vw;
+  padding: 2em 5vw;
   min-height: 50vh;
   overflow: auto;
 }
@@ -32,4 +32,14 @@
 .btn--dark--gt-xs {
   margin-left: auto;
   margin-right: auto;
+}
+
+
+
+@media screen and (min-width: 1024px) and (orientation: portrait) {
+
+  .change-orientation {
+    display: block !important;
+  } 
+
 }

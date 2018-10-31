@@ -1,4 +1,8 @@
 import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { BreedClassificationService } from '../../services/breed-classification.service';
+import { BreedIdentifier } from '../../shared/predictBreed';
+
+import * as tf from '@tensorflow/tfjs';
 
 @Component({
   selector: 'app-breeds',
@@ -8,25 +12,53 @@ import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 export class BreedsComponent implements OnInit {
 
   title = 'Breeds';
-  preview: ElementRef;
-  change: Boolean = false;
+  preview: ImageData;
 
-  constructor(private el: ElementRef, private renderer: Renderer2) { }
+  topModel: tf.Model;
+  mobinet: tf.Model;
+  breedIdentifier: BreedIdentifier;
+
+  constructor(
+    private el: ElementRef,
+    private renderer: Renderer2,
+    private breedService: BreedClassificationService) {
+   }
 
   ngOnInit() {
+    this.breedService.getTopModel()
+      .subscribe(
+        model => {
+          this.topModel = model;
+          console.log(this.topModel);
+          this.breedIdentifier = new BreedIdentifier(this.topModel, this.mobinet);
+        },
+        err => console.log(err.message)
+      );
+
+    // this.breedService.getMobinet()
+    //     .subscribe(
+    //       model => {
+    //         this.mobinet = model;
+    //         this.breedIdentifier = new BreedIdentifier(this.topModel, this.mobinet);
+    //       },
+    //       err => console.log(err.message)
+    //     );
+
     this.preview = this.el.nativeElement.querySelector('.img-preview');
+    console.log(this.preview);
   }
 
   onImgSelected(event) {
-    this.change = true;
     const reader = new FileReader();
-    reader.onload = () => {
+    reader.onload = async () => {
       const dataUrl = reader.result.toString();
-      this.renderer.setAttribute(this.preview, 'src', dataUrl);
-      this.change = false;
+      await this.renderer.setAttribute(this.preview, 'src', dataUrl);
+      console.log(this.preview);
+      this.breedIdentifier.predict(this.preview)
+        .then(result => console.log(result))
+        .catch(err => console.log(err));
     };
 
     reader.readAsDataURL(event.target.files[0]);
   }
-
 }

@@ -19,6 +19,10 @@ import { PageContentComponent } from './shared/components/page-content/page-cont
 
 import { BreedClassificationService } from './services/breed-classification.service';
 
+import { BaseUrl } from './shared/constants';
+import { RestangularConfigFatory } from './shared/restConfig';
+import { RestangularModule } from 'ngx-restangular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,12 +42,14 @@ import { BreedClassificationService } from './services/breed-classification.serv
     MatIconModule,
     MatButtonModule,
     FontAwesomeModule,
+    RestangularModule.forRoot(RestangularConfigFatory)
   ],
   exports: [
     MatIconModule
   ],
   providers: [
     BreedClassificationService,
+    {provide: 'BaseUrl', useValue: BaseUrl},
   ],
   bootstrap: [AppComponent]
 })

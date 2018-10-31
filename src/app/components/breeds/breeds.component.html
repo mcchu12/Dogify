@@ -13,7 +13,7 @@
     <strong>what kind of good pup is that?</strong>
   </p>
   <button mat-fab class="fab" (click)="imgPicker.click()">+</button>
-  <div class="preview"  [ngClass]="{'fade': change}" fxLayout="column" fxLayoutAlign="center">
+  <div class="preview" fxLayout="column" fxLayoutAlign="center">
     <img class="img-preview" src="../../../assets/img/poodle.jpg" alt="preview image">
   </div>
   <input #imgPicker fxHide type="file" (change)="onImgSelected($event)">
