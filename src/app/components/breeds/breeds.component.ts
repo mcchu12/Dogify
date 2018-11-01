@@ -1,8 +1,9 @@
 import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
-import { BreedClassificationService } from '../../services/breed-classification.service';
-import { BreedIdentifier } from '../../shared/predictBreed';
+import { MatDialog } from '@angular/material';
 
-import * as tf from '@tensorflow/tfjs';
+import { PredictionComponent } from 'src/app/shared/components/prediction/prediction.component';
+
+import { BreedClassificationService } from '../../services/breed-classification.service';
 
 @Component({
   selector: 'app-breeds',
@@ -12,53 +13,33 @@ import * as tf from '@tensorflow/tfjs';
 export class BreedsComponent implements OnInit {
 
   title = 'Breeds';
-  preview: ImageData;
-
-  topModel: tf.Model;
-  mobinet: tf.Model;
-  breedIdentifier: BreedIdentifier;
+  // preview: ImageData;
 
   constructor(
+    private dialog: MatDialog,
     private el: ElementRef,
-    private renderer: Renderer2,
-    private breedService: BreedClassificationService) {
+    private renderer: Renderer2) {
    }
 
   ngOnInit() {
-    this.breedService.getTopModel()
-      .subscribe(
-        model => {
-          this.topModel = model;
-          console.log(this.topModel);
-          this.breedIdentifier = new BreedIdentifier(this.topModel, this.mobinet);
-        },
-        err => console.log(err.message)
-      );
-
-    // this.breedService.getMobinet()
-    //     .subscribe(
-    //       model => {
-    //         this.mobinet = model;
-    //         this.breedIdentifier = new BreedIdentifier(this.topModel, this.mobinet);
-    //       },
-    //       err => console.log(err.message)
-    //     );
-
-    this.preview = this.el.nativeElement.querySelector('.img-preview');
-    console.log(this.preview);
+    // this.preview = this.el.nativeElement.querySelector('.img-preview');
   }
 
-  onImgSelected(event) {
+  onImgSelected(event): void {
     const reader = new FileReader();
+
     reader.onload = async () => {
       const dataUrl = reader.result.toString();
-      await this.renderer.setAttribute(this.preview, 'src', dataUrl);
-      console.log(this.preview);
-      this.breedIdentifier.predict(this.preview)
-        .then(result => console.log(result))
-        .catch(err => console.log(err));
+      this.openPredictionModal(dataUrl);
+      // await this.renderer.setAttribute(this.preview, 'src', dataUrl);
     };
 
     reader.readAsDataURL(event.target.files[0]);
+  }
+
+  openPredictionModal(image: string) {
+    this.dialog.open(PredictionComponent, {
+      data: { image }
+    });
   }
 }
