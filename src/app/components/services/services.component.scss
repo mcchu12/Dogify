@@ -1,5 +1,9 @@
 @import 'variables';
 
+:host {
+    display: block;
+}
+
 .service-content {
     margin: 2em 0;
 }
@@ -15,3 +19,11 @@
     display: block;
     font-size: 2em;
 }
+
+.mat-button {
+    margin: 2em 0 3em;
+    padding: 0.2em 4em;
+    border-radius: 6px;
+    background-color: $black;
+    color: $white;
+  }

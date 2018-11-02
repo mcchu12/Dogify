@@ -12,29 +12,20 @@
   overflow: auto;
 }
 
+.main--sm {
+  margin: 0 auto;
+  max-width: 750px !important;
+}
+
 .main--gt-sm {
   margin-left: 50%;
   min-height: 100vh;
 }
 
-.btn {
-  padding: 1em 4em;
-  border-radius: 6px;
+.btn--gt-xs {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
-
-.btn--dark {
-  margin: 2em 0 3em;
-  display: block;
-  background-color: $black;
-  color: $white;
-}
-
-.btn--dark--gt-xs {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
 
 @media screen and (min-width: 1024px) and (orientation: portrait) {
 

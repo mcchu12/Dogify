@@ -1,12 +1,13 @@
 <app-hero [title]="title"></app-hero>
-<main 
-  class="main" 
-  ngClass.gt-sm="main--gt-sm"
+<main
+  class="main"
+  ngClass="main--sm"
+  [ngClass.gt-sm]="{'main--sm': false, 'main--gt-sm': true}"
   fxLayout="column"
   fxLayoutAlign="center"
 >
   <div class="service-content" ngClass.gt-xs="service-content--gt-xs">
-    
+
     <div class="service">
       <fa-icon [icon]="icRoute"></fa-icon>
       <h4>Dog Walking</h4>
@@ -30,7 +31,7 @@
       <fa-icon [icon]="icHome"></fa-icon>
     <h4>House Sitting</h4>
     <p>
-      Just because your leaving home; doesn't mean your pet has to! 
+      Just because your leaving home; doesn't mean your pet has to!
       Leave them in the comfort of their own home and we will come visit!
     </p>
   </div>
@@ -39,13 +40,13 @@
     <fa-icon [icon]="icSuitcase"></fa-icon>
     <h4>Pet Boarding</h4>
     <p>
-      A home away from home. Your dog will stay with one 
-      of our sitters in a family environment. 
+      A home away from home. Your dog will stay with one
+      of our sitters in a family environment.
       Your babes will be taken care of from A to Z.
     </p>
   </div>
   </div>
 
-  <button class="btn btn--dark" ngClass.gt-xs="btn--dark--gt-xs">Book a Service</button>
+  <button ngClass.gt-xs="btn--gt-xs" mat-button>Book a Service</button>
 
 </main>

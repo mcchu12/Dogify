@@ -1,21 +1,27 @@
 <app-hero [title]="title"></app-hero>
-<main 
+<main
   class="main"
-  ngClass.gt-sm="main--gt-sm"
+  ngClass="main--sm"
+  [ngClass.gt-sm]="{'main--sm': false, 'main--gt-sm': true}"
   fxLayout="column"
-  fxLayoutAlign="center"
+  fxLayoutAlign="start"
 >
   <p>
-    AI may be busy taking over the world. 
-    However, they can certainly help us answer 
-    an ubiquitous question that we all ask 
-    when meeting a four-legged stranger: 
+    AI may be busy taking over the world.
+    However, they can certainly help us answer
+    an ubiquitous question that we all ask
+    when meeting a four-legged stranger:
     <strong>what kind of good pup is that?</strong>
   </p>
-  <button mat-fab class="fab" (click)="imgPicker.click()">+</button>
-  <div class="preview" fxLayout="column" fxLayoutAlign="center">
-    <img class="img-preview" src="../../../assets/img/poodle.jpg" alt="preview image">
-  </div>
-  <input #imgPicker fxHide type="file" (change)="onImgSelected($event)">
   
+  <div class="preview" [ngStyle]="{ 'background-image': 'url(' + preview + ')' }">
+  </div>
+
+  <div class="result">{{ breed }}</div>
+  
+
+  <input fxHide #imgPicker type="file" (change)="onImgSelected($event)">
+
+  <button mat-fab class="fab" (click)="imgPicker.click()">+</button>
+
 </main>

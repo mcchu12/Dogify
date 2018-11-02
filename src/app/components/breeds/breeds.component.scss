@@ -1,15 +1,21 @@
 @import 'variables';
 
-.preview {
-    min-height: 50vh;
+:host {
+    display: block;
 }
 
-.img-preview {
-    width: 50%;
-    height: auto;
-    margin: 1em auto;
-    display: block;
-    transition: all 500ms;
+.preview {
+    padding: 0 10vw;
+    min-height: 50vh;
+    background-size: cover;
+    background-position: center center;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+}
+
+.result {
+    margin: 3em;
+    text-align: center;
 }
 
 .fab {

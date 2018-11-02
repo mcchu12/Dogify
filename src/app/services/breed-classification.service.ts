@@ -28,7 +28,7 @@ export class BreedClassificationService {
     console.log('Load model done!');
   }
 
-  predict(image: ImageData): Observable<number> {
+  predict(image: any): Observable<number> {
     return from(this.breedIdentifier.predict(image));
   }
 

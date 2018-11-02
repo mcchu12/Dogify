@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
@@ -23,7 +22,6 @@ import { BreedClassificationService } from './services/breed-classification.serv
 import { BaseUrl } from './shared/constants';
 import { RestangularConfigFatory } from './shared/restConfig';
 import { RestangularModule } from 'ngx-restangular';
-import { PredictionComponent } from './shared/components/prediction/prediction.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +32,6 @@ import { PredictionComponent } from './shared/components/prediction/prediction.c
     BlogComponent,
     HeroComponent,
     HeaderComponent,
-    PredictionComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,16 +41,12 @@ import { PredictionComponent } from './shared/components/prediction/prediction.c
     FlexLayoutModule,
     MatIconModule,
     MatButtonModule,
-    MatDialogModule,
     FontAwesomeModule,
     RestangularModule.forRoot(RestangularConfigFatory)
   ],
   providers: [
     BreedClassificationService,
     {provide: 'BaseUrl', useValue: BaseUrl},
-  ],
-  entryComponents: [
-    PredictionComponent
   ],
   bootstrap: [AppComponent]
 })

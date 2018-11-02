@@ -1,45 +1,49 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
-import { MatDialog } from '@angular/material';
-
-import { PredictionComponent } from 'src/app/shared/components/prediction/prediction.component';
+import { Component, OnInit, Inject, HostBinding } from '@angular/core';
 
 import { BreedClassificationService } from '../../services/breed-classification.service';
+import { fade } from '../../animations/animations';
 
 @Component({
   selector: 'app-breeds',
   templateUrl: './breeds.component.html',
-  styleUrls: ['./breeds.component.scss']
+  styleUrls: ['./breeds.component.scss'],
+  animations: [
+    fade(),
+  ]
 })
+
 export class BreedsComponent implements OnInit {
 
+  @HostBinding('@fade') animated = true;
+
   title = 'Breeds';
-  // preview: ImageData;
+  preview: string;
+  breed: number;
 
   constructor(
-    private dialog: MatDialog,
-    private el: ElementRef,
-    private renderer: Renderer2) {
+    @Inject('BaseUrl') private BaseUrl,
+    private breedServer: BreedClassificationService) {
+      this.preview = this.BaseUrl + 'img/preview.jpg';
    }
 
   ngOnInit() {
-    // this.preview = this.el.nativeElement.querySelector('.img-preview');
   }
 
   onImgSelected(event): void {
     const reader = new FileReader();
 
-    reader.onload = async () => {
+    reader.onload = () => {
       const dataUrl = reader.result.toString();
-      this.openPredictionModal(dataUrl);
-      // await this.renderer.setAttribute(this.preview, 'src', dataUrl);
+      this.preview = dataUrl;
+
+      this.breedServer.predict(dataUrl)
+        .subscribe(
+          res => this.breed = res,
+          err => console.log(err.message)
+        );
+
     };
 
     reader.readAsDataURL(event.target.files[0]);
-  }
-
-  openPredictionModal(image: string) {
-    this.dialog.open(PredictionComponent, {
-      data: { image }
-    });
   }
 }
