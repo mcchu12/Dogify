@@ -1,14 +1,14 @@
 :host {
     display: block;
+
+    main {
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+    }
 }
 
 .headline--primary {
     margin-bottom: 0;
-}
-
-.home {
-    padding-top: 5vh;
-    padding-bottom: 5vh;
 }
 
 .home-content {

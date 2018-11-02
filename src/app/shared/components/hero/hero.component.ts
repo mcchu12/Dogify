@@ -1,7 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { kBaseImgUrl } from '../../constants';
 
 @Component({
   selector: 'app-hero',
@@ -9,14 +7,24 @@ import { kBaseImgUrl } from '../../constants';
   styleUrls: ['./hero.component.scss']
 })
 export class HeroComponent implements OnInit {
-  @Input() title: string;
+
+  @Input() showTitle = true;
+  title: string;
   img: string;
 
-  constructor(private router: Router) {
+  constructor(
+    @Inject('BaseUrl') private BaseUrl,
+    private router: Router) {
   }
 
   ngOnInit() {
-    this.img = kBaseImgUrl + this.router.url + '.jpg';
+    this.init();
+  }
+
+  private init() {
+    const route = this.router.url;
+    this.img = `${this.BaseUrl}/img/${route}.jpg`;
+    this.title = route.replace('/', '');
   }
 
 }

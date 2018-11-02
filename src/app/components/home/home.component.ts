@@ -1,19 +1,13 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { faPaw, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit } from '@angular/core';
 
-import { fade } from '../../animations/animations';
+import { faPaw, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  animations: [
-    fade(),
-  ]
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  @HostBinding('@fade') animated = true;
 
   icPaw: IconDefinition;
 

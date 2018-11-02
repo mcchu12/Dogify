@@ -1,11 +1,4 @@
-<app-hero [title]="title"></app-hero>
-<main
-  class="main"
-  ngClass="main--sm"
-  [ngClass.gt-sm]="{'main--sm': false, 'main--gt-sm': true}"
-  fxLayout="column"
-  fxLayoutAlign="start"
->
+<app-container>
   <p>
     AI may be busy taking over the world.
     However, they can certainly help us answer
@@ -17,11 +10,11 @@
   <div class="preview" [ngStyle]="{ 'background-image': 'url(' + preview + ')' }">
   </div>
 
-  <div class="result">{{ breed }}</div>
-  
+  <ng-container *ngIf="breed">
+    <div class="result">{{ breed }}</div>
+  </ng-container>  
 
-  <input fxHide #imgPicker type="file" (change)="onImgSelected($event)">
+  <input fxHide #imgPicker type="file" accept=".png, .jpg, .jpeg" (change)="onImgSelected($event)">
 
   <button mat-fab class="fab" (click)="imgPicker.click()">+</button>
-
-</main>
+</app-container>

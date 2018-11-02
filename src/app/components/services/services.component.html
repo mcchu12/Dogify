@@ -1,11 +1,4 @@
-<app-hero [title]="title"></app-hero>
-<main
-  class="main"
-  ngClass="main--sm"
-  [ngClass.gt-sm]="{'main--sm': false, 'main--gt-sm': true}"
-  fxLayout="column"
-  fxLayoutAlign="center"
->
+<app-container>
   <div class="service-content" ngClass.gt-xs="service-content--gt-xs">
 
     <div class="service">
@@ -49,4 +42,4 @@
 
   <button ngClass.gt-xs="btn--gt-xs" mat-button>Book a Service</button>
 
-</main>
+</app-container>

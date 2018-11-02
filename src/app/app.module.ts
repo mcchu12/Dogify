@@ -22,6 +22,7 @@ import { BreedClassificationService } from './services/breed-classification.serv
 import { BaseUrl } from './shared/constants';
 import { RestangularConfigFatory } from './shared/restConfig';
 import { RestangularModule } from 'ngx-restangular';
+import { ContainerComponent } from './shared/components/container/container.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { RestangularModule } from 'ngx-restangular';
     BlogComponent,
     HeroComponent,
     HeaderComponent,
+    ContainerComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,22 +1,15 @@
-import { Component, OnInit, Inject, HostBinding } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 import { BreedClassificationService } from '../../services/breed-classification.service';
-import { fade } from '../../animations/animations';
 
 @Component({
   selector: 'app-breeds',
   templateUrl: './breeds.component.html',
-  styleUrls: ['./breeds.component.scss'],
-  animations: [
-    fade(),
-  ]
+  styleUrls: ['./breeds.component.scss']
 })
 
 export class BreedsComponent implements OnInit {
 
-  @HostBinding('@fade') animated = true;
-
-  title = 'Breeds';
   preview: string;
   breed: number;
 
@@ -43,7 +36,10 @@ export class BreedsComponent implements OnInit {
         );
 
     };
+    const file = event.target.files[0];
 
-    reader.readAsDataURL(event.target.files[0]);
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
 }
