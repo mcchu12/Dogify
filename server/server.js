@@ -8,6 +8,3 @@ app.use(cors());
 app.use(express.static('./public'));
 
 app.listen(port, () => { console.log('Serving at 3000') });
-
-
-

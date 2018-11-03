@@ -14,10 +14,20 @@
     grid-gap: 1em;
 }
 
-.service fa-icon {
-    margin-bottom: 0.5em;
-    display: block;
-    font-size: 2em;
+.service {
+    fa-icon {
+        margin-bottom: 0.5em;
+        position: relative;
+        display: inline-block;
+        font-size: 2em;
+    }
+}
+
+.service:hover {
+    fa-icon {
+        -webkit-animation: spin 2s cubic-bezier(0, 0.45, 0.32, 1.28);
+        animation: spin 2s cubic-bezier(0, 0.45, 0.32, 1.28);
+    }
 }
 
 .mat-button {
@@ -26,4 +36,9 @@
     border-radius: 6px;
     background-color: $black;
     color: $white;
-  }
+}
+
+@keyframes spin {
+    from {transform: rotateZ(0deg);}
+    to {transform: rotateZ(360deg);}
+}
