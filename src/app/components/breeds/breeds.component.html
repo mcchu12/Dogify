@@ -11,7 +11,7 @@
   </div>
 
   <ng-container *ngIf="breed">
-    <div class="result">{{ breed }}</div>
+    <div class="result">{{ breed.name }}</div>
   </ng-container>  
 
   <input fxHide #imgPicker type="file" accept=".png, .jpg, .jpeg" (change)="onImgSelected($event)">

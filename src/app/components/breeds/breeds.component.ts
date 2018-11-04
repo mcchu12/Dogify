@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { BreedClassificationService } from '../../services/breed-classification.service';
+import { Breed } from 'src/app/shared/breed';
 
 @Component({
   selector: 'app-breeds',
@@ -11,7 +12,9 @@ import { BreedClassificationService } from '../../services/breed-classification.
 export class BreedsComponent implements OnInit {
 
   preview: string;
-  breed: number;
+  breed: Breed;
+
+  breedList: Breed[];
 
   constructor(
     @Inject('BaseUrl') private BaseUrl,
@@ -20,6 +23,7 @@ export class BreedsComponent implements OnInit {
    }
 
   ngOnInit() {
+    // console.log(this.breedList);
   }
 
   onImgSelected(event): void {
@@ -30,7 +34,7 @@ export class BreedsComponent implements OnInit {
       this.preview = dataUrl;
 
       this.breedServer.predict(dataUrl)
-        .subscribe(
+        .then(
           res => this.breed = res,
           err => console.log(err.message)
         );
