@@ -4,7 +4,17 @@
     display: block;
 }
 
+.classification {
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
+.test {
+    opacity: 0;
+}
+
 .preview {
+    margin: 2em 0;
     padding: 0 10vw;
     min-height: 50vh;
     background-size: cover;
@@ -14,7 +24,7 @@
 }
 
 .result {
-    margin: 3em;
+    margin: 0 5vw 2em;
     text-align: center;
 }
 

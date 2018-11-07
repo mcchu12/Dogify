@@ -7,13 +7,20 @@
     <strong>what kind of good pup is that?</strong>
   </p>
   
-  <div class="preview" [ngStyle]="{ 'background-image': 'url(' + preview + ')' }">
+  <div class="classification" [ngClass]="{'test': test}">
+
+    <div class="preview" [ngStyle]="{ 'background-image': 'url(' + preview + ')' }">
+      </div>
+    
+      <ng-container *ngIf="breed">
+        <div class="result">
+          <h4>{{ breed.breed }}</h4>
+          <p>{{ breed.temparement }}</p>
+        </div>
+      </ng-container> 
+
   </div>
-
-  <ng-container *ngIf="breed">
-    <div class="result">{{ breed }}</div>
-  </ng-container>  
-
+   
   <input fxHide #imgPicker type="file" accept=".png, .jpg, .jpeg" (change)="onImgSelected($event)">
 
   <button mat-fab class="fab" (click)="imgPicker.click()">+</button>

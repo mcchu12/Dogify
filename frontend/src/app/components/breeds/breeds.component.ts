@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { BreedClassificationService } from '../../services/breed-classification.service';
-import { Breed } from 'src/app/shared/breed';
 
 @Component({
   selector: 'app-breeds',
@@ -12,10 +11,9 @@ import { Breed } from 'src/app/shared/breed';
 export class BreedsComponent implements OnInit {
 
   preview: string;
-  breed: string;
+  test: boolean;
+  breed: Object;
   reader: FileReader;
-
-  breedList: Breed[];
 
   constructor(
     @Inject('BaseUrl') private BaseUrl,
@@ -30,15 +28,30 @@ export class BreedsComponent implements OnInit {
 
   onImgSelected(event): void {
 
+    // Preview image upload
     this.reader.onload = () => {
       const dataUrl = this.reader.result.toString();
       this.preview = dataUrl;
     };
     const file = event.target.files[0];
-    this.reader.readAsDataURL(file);
 
-    this.breedService.upload(file).subscribe(
-      res => this.breed = res.breed
-    );
+    if (file) {
+      this.test = true;
+
+      // Upload to server to predict
+      this.breedService.predict(file).subscribe(
+        res => {
+          this.breed = res;
+          this.reader.readAsDataURL(file);
+          this.test = false;
+        },
+        err => {
+          this.breed = {
+            breed: 'Something went wrong',
+            temparement: 'Try again'
+          };
+        }
+      );
+    }
   }
 }
