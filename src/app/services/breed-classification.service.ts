@@ -1,51 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Observable, from } from 'rxjs';
-import { Restangular } from 'ngx-restangular';
-
-import { loadModel } from '@tensorflow/tfjs';
 
 import { BaseUrl } from '../shared/constants';
-import { BreedIdentifier } from '../shared/predictBreed';
 import { Breed } from '../shared/breed';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BreedClassificationService {
 
-  breedIdentifier: BreedIdentifier;
   breedList: Breed[];
 
-  constructor(private restangular: Restangular) {
-    this.loadModel();
-    this.getBreedList();
+  constructor(private http: HttpClient) {
   }
 
-  private async loadModel() {
-    // Load pretrained keras model on Imagenet
-    const base = await loadModel(BaseUrl + 'mobilenet/model.json');
+  upload(file: any): Observable<any> {
+    const fd = new FormData();
+    fd.append('file', file);
 
-    // Load trained on Kaggle dog data set
-    const top = await loadModel(BaseUrl + 'topModel/model.json');
-
-    this.breedIdentifier = new BreedIdentifier(top, base);
-    console.log('Load model done!');
+    return from(this.http.post(BaseUrl + 'api/upload', fd));
   }
-
-  private getBreedList(): void {
-    this.restangular.all('breeds').getList()
-      .subscribe(
-        res => { this.breedList = res; },
-        err => console.log(err.message)
-      );
-  }
-
-  async predict(dataUrl: string) {
-    const breed = await this.breedIdentifier.predict(dataUrl);
-    if (breed && this.breedList) {
-      return this.breedList[breed];
-    }
-  }
-
 
 }

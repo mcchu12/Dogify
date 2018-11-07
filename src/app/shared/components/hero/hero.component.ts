@@ -23,7 +23,7 @@ export class HeroComponent implements OnInit {
 
   private init() {
     const route = this.router.url;
-    this.img = `${this.BaseUrl}/img/${route}.jpg`;
+    this.img = `${this.BaseUrl}static/img${route}.jpg`;
     this.title = route.replace('/', '');
   }
 

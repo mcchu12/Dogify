@@ -3,6 +3,12 @@ const app = express();
 const cors = require('cors');
 const logger = require('morgan');
 
+const tf = require('@tensorflow/tfjs');
+require('@tensorflow/tfjs-node');
+
+const classifier = require('./classifier');
+new classifier();
+
 const port = 3000;
 
 const breeds = require('./breeds.json')
@@ -17,6 +23,13 @@ app.get('/breeds', (req, res, next) => {
   res.statusCode = 200;
   res.json(breeds);
   next();
+});
+
+app.post('/upload', (req, res, next) => {
+  console.log(req.body.image);
+  const result = classifier.predict(req.body.image);
+  console.log(result);
+  res.send(result);
 });
 
 app.listen(port, () => { console.log('Serving at 3000') });

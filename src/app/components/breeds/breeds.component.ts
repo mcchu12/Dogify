@@ -12,38 +12,33 @@ import { Breed } from 'src/app/shared/breed';
 export class BreedsComponent implements OnInit {
 
   preview: string;
-  breed: Breed;
+  breed: string;
+  reader: FileReader;
 
   breedList: Breed[];
 
   constructor(
     @Inject('BaseUrl') private BaseUrl,
-    private breedServer: BreedClassificationService) {
-      this.preview = this.BaseUrl + 'img/preview.jpg';
+    private breedService: BreedClassificationService) {
+      this.preview = this.BaseUrl + 'static/img/preview.jpg';
    }
 
   ngOnInit() {
-    // console.log(this.breedList);
+    // Global reader to avoid memory leak
+    this.reader = new FileReader();
   }
 
   onImgSelected(event): void {
-    const reader = new FileReader();
 
-    reader.onload = () => {
-      const dataUrl = reader.result.toString();
+    this.reader.onload = () => {
+      const dataUrl = this.reader.result.toString();
       this.preview = dataUrl;
-
-      this.breedServer.predict(dataUrl)
-        .then(
-          res => this.breed = res,
-          err => console.log(err.message)
-        );
-
     };
     const file = event.target.files[0];
+    this.reader.readAsDataURL(file);
 
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+    this.breedService.upload(file).subscribe(
+      res => this.breed = res.breed
+    );
   }
 }
