@@ -23,5 +23,8 @@
    
   <input fxHide #imgPicker type="file" accept=".png, .jpg, .jpeg" (change)="onImgSelected($event)">
 
-  <button mat-fab class="fab" (click)="imgPicker.click()">+</button>
+  <button mat-fab class="fab" (click)="imgPicker.click()">
+    <fa-icon [icon]="icPlus"></fa-icon>
+  </button>
+  
 </app-container>

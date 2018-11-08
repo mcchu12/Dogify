@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
+import { faPlus, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { BreedClassificationService } from '../../services/breed-classification.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { BreedClassificationService } from '../../services/breed-classification.
 
 export class BreedsComponent implements OnInit {
 
+  icPlus: IconDefinition;
   preview: string;
   test: boolean;
   breed: Object;
@@ -22,6 +24,7 @@ export class BreedsComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.icPlus = faPlus;
     // Global reader to avoid memory leak
     this.reader = new FileReader();
   }

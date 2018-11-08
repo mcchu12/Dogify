@@ -1,19 +1,4 @@
-import { trigger, state, style, animate, transition } from '@angular/animations';
-
-
-export function visibility() {
-  return trigger('visibility', [
-    state('shown', style({
-      transform: 'scale(1.0)',
-      opacity: 1
-    })),
-    state('hidden', style({
-      transform: 'scale(0.5)',
-      opacity: 0
-    })),
-    transition('* => *', animate('0.5s ease-in-out'))
-  ]);
-}
+import { trigger, state, style, animate, transition, keyframes, query, animateChild, group } from '@angular/animations';
 
 export function fade() {
   return trigger('fade', [
@@ -22,7 +7,10 @@ export function fade() {
     })),
     transition(':enter', [
       style({opacity: 0}),
-      animate('1s ease-in-out')
+      group([
+        animate('1s ease-in-out'),
+        query('@bounceIn', animateChild())
+      ]),
     ])
   ]);
 }
@@ -37,5 +25,36 @@ export function expand() {
       style({transform: 'translateY(-50%)', opacity: 0}),
       animate('200ms ease-in')
     ])
+  ]);
+}
+
+export function bounceIn() {
+  return trigger('bounceIn', [
+    transition(':enter', [
+      animate('0.75s cubic-bezier(0.215, 0.61, 0.355, 1)', keyframes([
+        style({opacity: 0, transform: 'scale3d(0.3, 0.3, 0.3)'}),
+        style({transform: 'scale3d(0.9, 0.9, 0.9)'}),
+        style({opacity: 1, transform: 'scale3d(1.03, 1.03, 1.03)'}),
+        style({transform: 'scale3d(0.97, 0.97, 0.97)'}),
+        style({transform: 'scale3d(0.9, 0.9, 0.9)'}),
+        style({opacity: 1, transform: 'scale3d(1, 1, 1)'}),
+      ]))
+    ])
+  ]);
+}
+
+export function slideInUp() {
+  return trigger('slideInUp', [
+    state('*', style({
+      opacity: 1,
+      transform: 'translate3d(0, 0, 0)'
+    })),
+    transition(':enter', [
+      style({
+        opacity: 0,
+        transform: 'translate3d(0, 100%, 0)'
+      }),
+      animate('1s')
+      ])
   ]);
 }
