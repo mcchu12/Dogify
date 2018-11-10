@@ -24,15 +24,15 @@ class BreedClassifier:
         self.model = Sequential()
         self.model.add(GlobalAveragePooling2D(input_shape=(7, 7, 1024)))
         self.model.add(Dense(133, activation='softmax'))
-        self.model.load_weights('static/model/weights.best.mobilenet.hdf5')
+        self.model.load_weights('app/data/weights/weights.best.mobilenet.hdf5')
         self.model._make_predict_function()
 
     def load_breeds_data(self):
         # Load breeds data 
-        self.dog_names = pd.read_csv('breeds.csv').name.tolist()
-        self.dog_temparement = pd.read_csv('breeds.csv').temperament.tolist()
+        self.dog_names = pd.read_csv('app/data/breeds.csv').name.tolist()
+        self.dog_temparement = pd.read_csv('app/data/breeds.csv').temperament.tolist()
         # Load imagenet classes
-        self.imagenet = pd.read_csv('imagenet.txt').classes.tolist()
+        self.imagenet = pd.read_csv('app/data/imagenet.txt').classes.tolist()
 
     def path_to_tensor(self, img_path):
         # loads RGB image from path and resize to 224x224
