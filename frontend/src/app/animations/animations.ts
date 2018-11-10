@@ -1,29 +1,19 @@
-import { trigger, state, style, animate, transition, keyframes, query, animateChild, group } from '@angular/animations';
+import { trigger, state, style, animate, transition, keyframes, query, animateChild, group, sequence } from '@angular/animations';
 
 export function fade() {
   return trigger('fade', [
-    state('*', style({
-      opacity: 1
-    })),
     transition(':enter', [
       style({opacity: 0}),
       group([
-        animate('1s ease-in-out'),
-        query('@bounceIn', animateChild())
-      ]),
-    ])
-  ]);
-}
-
-export function expand() {
-  return trigger('expand', [
-    state('*', style({
-      opacity: 1,
-      transform: 'translateY(0)'
-    })),
-    transition(':enter', [
-      style({transform: 'translateY(-50%)', opacity: 0}),
-      animate('200ms ease-in')
+        animate('500ms ease-in-out', style({opacity: 1})),
+        sequence([
+          query('.hero-title', animateChild(), { optional: true }),
+          query('.main', animateChild()),
+        ])
+      ])
+    ]),
+    transition(':leave', [
+      animate('200ms', style({opacity: 0}))
     ])
   ]);
 }
@@ -43,18 +33,18 @@ export function bounceIn() {
   ]);
 }
 
-export function slideInUp() {
-  return trigger('slideInUp', [
+export function fadeInLeft() {
+  return trigger('fadeInLeft', [
     state('*', style({
       opacity: 1,
-      transform: 'translate3d(0, 0, 0)'
+      transform: 'translateX(0)'
     })),
     transition(':enter', [
       style({
         opacity: 0,
-        transform: 'translate3d(0, 100%, 0)'
+        transform: 'translateX(-10%)'
       }),
-      animate('1s')
+      animate('500ms 50ms cubic-bezier(0.35, 0, 0.25, 1)')
       ])
   ]);
 }

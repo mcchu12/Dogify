@@ -6,7 +6,7 @@
   fxLayoutAlign="start center"
 >
   <ng-container *ngIf="showTitle">
-    <h1>{{ title }}</h1>
+    <h1 [@fadeInLeft]="title ? true : false" class="hero-title">{{ title }}</h1>
   </ng-container>
   
 </div>

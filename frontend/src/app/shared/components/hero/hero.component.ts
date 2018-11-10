@@ -1,10 +1,14 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { fadeInLeft } from 'src/app/animations/animations';
 
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.scss']
+  styleUrls: ['./hero.component.scss'],
+  animations: [
+    fadeInLeft()
+  ]
 })
 export class HeroComponent implements OnInit {
 

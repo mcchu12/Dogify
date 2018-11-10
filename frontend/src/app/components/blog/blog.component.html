@@ -1,3 +1,10 @@
 <app-container>
-    
+  <ng-container *ngIf="first">
+    <div class="blog-wrapper">
+        <div class="article">
+          <h2>{{ first.title }}</h2>
+          <p>{{ first.content }}</p>
+        </div>
+      </div>
+  </ng-container>
 </app-container>

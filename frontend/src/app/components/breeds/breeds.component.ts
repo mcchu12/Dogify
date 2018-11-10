@@ -40,12 +40,11 @@ export class BreedsComponent implements OnInit {
 
     if (file) {
       this.test = true;
-
       // Upload to server to predict
       this.breedService.predict(file).subscribe(
         res => {
-          this.breed = res;
           this.reader.readAsDataURL(file);
+          this.breed = res;
           this.test = false;
         },
         err => {
@@ -53,6 +52,7 @@ export class BreedsComponent implements OnInit {
             breed: 'Something went wrong',
             temparement: 'Try again'
           };
+          console.log(err);
         }
       );
     }

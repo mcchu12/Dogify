@@ -1,6 +1,6 @@
 import { Component, OnInit, HostBinding, Input } from '@angular/core';
 
-import { fade, bounceIn, slideInUp } from 'src/app/animations/animations';
+import { fade, fadeInLeft } from 'src/app/animations/animations';
 
 @Component({
   selector: 'app-container',
@@ -8,12 +8,10 @@ import { fade, bounceIn, slideInUp } from 'src/app/animations/animations';
   styleUrls: ['./container.component.scss'],
   animations: [
     fade(),
-    bounceIn(),
-    slideInUp()
+    fadeInLeft()
   ]
 })
 export class ContainerComponent implements OnInit {
-
 
   @HostBinding('@fade') public animated = true;
 
