@@ -1,0 +1,28 @@
+@import 'helper';
+
+.post-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  grid-auto-rows: 20px;
+  // grid-auto-flow: dense;
+}
+
+.post {
+  font-size: 0.85em;
+  margin-bottom: 2em;
+}
+
+.post__date {
+  font-size: 0.75em;
+  color: palette(grey, light);
+}
+
+.thumbnail {
+  margin-bottom: 1em;
+  padding: 0 5vw;
+
+  img {
+    width: 100%;
+  }
+}
