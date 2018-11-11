@@ -1,85 +1,21 @@
 <app-container>
-  <!-- <ng-container *ngIf="first">
-    <div class="blog-wrapper">
-        <div class="article">
-          <h2>{{ first.title }}</h2>
-          <p>{{ first.content }}</p>
-        </div>
-      </div>
-  </ng-container> -->
 
-  <div class="post-container">
-      <div class="post">
+  <div class="masonry" ngClass.gt-xs="masonry--gt-xs">
+
+      <div #foo class="post" *ngFor="let post of posts; let last = last">
         <div class="post-content">
-          <div class="thumbnail">
-            <img src="" alt="">
+          <div class="thumbnail" *ngIf="post.thumbnail">
+            <img src="{{ post.thumbnail }}" alt="" (load)="resizeAllGridItems()">  
           </div>
-          <div class="post__date">October 18, 2018</div>
-          <h4 class="post__title">How to train a wolf</h4>
+          <div class="post__date"></div>
+          <h3 class="post__title">{{ post.title }}</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Aenean condimentum ullamcorper orci, quis hendrerit elit bibendum non. 
-            Vestibulum eleifend mattis odio nec iaculis. Proin feugiat eu purus sit amet aliquam. 
-            Morbi accumsan ex non leo varius rhoncus. 
-            Nam semper augue urna, sit amet condimentum nisi egestas ac.
+            {{ post.content }}
           </p>
-          <button class="sub-title">Read article</button>
+          <button class="sub-title btn--blog">Read Article</button>
         </div>
       </div>
     
-      <div class="post">
-        <div class="post-content">
-          <div class="thumbnail">
-            <img src="" alt="">
-          </div>
-          <div class="post__date">October 18, 2018</div>
-          <h4 class="post__title">How to train a wolf</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Aenean condimentum ullamcorper orci, quis hendrerit elit bibendum non. 
-            Vestibulum eleifend mattis odio nec iaculis. Proin feugiat eu purus sit amet aliquam. 
-            Morbi accumsan ex non leo varius rhoncus. 
-            Nam semper augue urna, sit amet condimentum nisi egestas ac.
-          </p>
-          <button class="sub-title">Read article</button>
-        </div>
-      </div>
-
-      <div class="post">
-        <div class="post-content">
-          <div class="thumbnail">
-            <img src="" alt="">
-          </div>
-          <div class="post__date">October 18, 2018</div>
-          <h4 class="post__title">How to train a wolf</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Aenean condimentum ullamcorper orci, quis hendrerit elit bibendum non. 
-            Vestibulum eleifend mattis odio nec iaculis. Proin feugiat eu purus sit amet aliquam. 
-            Morbi accumsan ex non leo varius rhoncus. 
-            Nam semper augue urna, sit amet condimentum nisi egestas ac.
-          </p>
-          <button class="sub-title">Read article</button>
-        </div>
-      </div>
-
-      <div class="post">
-        <div class="post-content">
-          <div class="thumbnail">
-            <img src="" alt="">
-          </div>
-          <div class="post__date">October 18, 2018</div>
-          <h4 class="post__title">How to train a wolf</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Aenean condimentum ullamcorper orci, quis hendrerit elit bibendum non. 
-            Vestibulum eleifend mattis odio nec iaculis. Proin feugiat eu purus sit amet aliquam. 
-            Morbi accumsan ex non leo varius rhoncus. 
-            Nam semper augue urna, sit amet condimentum nisi egestas ac.
-          </p>
-          <button class="sub-title">Read article</button>
-        </div>
-      </div>
   </div>
   
 </app-container>

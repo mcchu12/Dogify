@@ -37,7 +37,6 @@ export function fadeInLeft() {
   return trigger('fadeInLeft', [
     state('*', style({
       opacity: 1,
-      transform: 'translateX(0)'
     })),
     transition(':enter', [
       style({
