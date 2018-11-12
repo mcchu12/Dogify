@@ -6,22 +6,6 @@
 .text-center { text-align: center; }
 .text-left { text-align: left; }
 
-.main {
-  padding: 2em 5vw;
-  min-height: 50vh;
-  overflow: auto;
-}
-
-.main--sm {
-  margin: 0 auto;
-  max-width: 750px !important;
-}
-
-.main--gt-sm {
-  margin-left: 50%;
-  min-height: 100vh;
-}
-
 .btn--gt-xs {
   margin-left: auto !important;
   margin-right: auto !important;

@@ -43,3 +43,14 @@ def blog():
     # serialize as Json
     session.close()
     return jsonify(posts)
+
+@app.route('/api/blog/<id>')
+def post(id):
+  session = db.session()
+  post_object = session.query(Post).get(id)
+
+  post = PostSchema().dump(post_object)
+
+  session.close()
+  return jsonify(post)
+  

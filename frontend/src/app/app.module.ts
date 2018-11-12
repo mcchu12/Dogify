@@ -13,16 +13,17 @@ import { HomeComponent } from './components/home/home.component';
 import { ServicesComponent } from './components/services/services.component';
 import { BreedsComponent } from './components/breeds/breeds.component';
 import { BlogComponent } from './components/blog/blog.component';
-import { HeroComponent } from './shared/components/hero/hero.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
+import { ContainerComponent } from './shared/components/container/container.component';
+import { BlogArticleComponent } from './components/blog-article/blog-article.component';
 
 import { BreedClassificationService } from './services/breed-classification.service';
+import { BlogService } from './services/blog.service';
 
 import { BaseUrl } from './shared/constants';
 import { RestangularConfigFatory } from './shared/restConfig';
 import { RestangularModule } from 'ngx-restangular';
-import { ContainerComponent } from './shared/components/container/container.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +32,9 @@ import { ContainerComponent } from './shared/components/container/container.comp
     ServicesComponent,
     BreedsComponent,
     BlogComponent,
-    HeroComponent,
     HeaderComponent,
     ContainerComponent,
+    BlogArticleComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +49,7 @@ import { ContainerComponent } from './shared/components/container/container.comp
   ],
   providers: [
     BreedClassificationService,
+    BlogService,
     {provide: 'BaseUrl', useValue: BaseUrl},
   ],
   bootstrap: [AppComponent]

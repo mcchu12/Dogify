@@ -10,7 +10,7 @@ export class BlogComponent implements OnInit {
 
   posts: any;
 
-  @ViewChildren('postItem') postItems: QueryList<any>;
+  @ViewChildren('item') postItems: QueryList<any>;
 
   constructor(private http: HttpClient, private el: ElementRef) {
    }

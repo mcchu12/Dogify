@@ -1,4 +1,16 @@
-<app-hero [showTitle]="showTitle"></app-hero>
+<div
+  class="hero"
+  ngClass.gt-sm="hero--gt-sm"
+  [ngStyle]="{ 'background-image': 'url(' + (isBlog ? blogThumbnail : img) + ')' }"
+  fxLayout="row"
+  fxLayoutAlign="start center"
+>
+  <ng-container *ngIf="showTitle">
+    <h1 [@fadeInLeft]="showTitle ? true : false" class="hero-title">{{ isBlog ? blogTitle : title }}</h1>
+  </ng-container>
+  
+</div>
+
 <main
   class="main"
   ngClass="main--sm"
