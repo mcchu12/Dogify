@@ -3,6 +3,7 @@ import shutil
 import glob
 
 from flask import request, jsonify
+from sqlalchemy import desc
 
 from app import app
 from app import db
@@ -34,7 +35,7 @@ def predict():
 def blog():
     # fetch posts from database
     session = db.session()
-    post_objects = session.query(Post).all()
+    post_objects = session.query(Post).order_by(Post.date_posted.desc()).all()
 
     # transform into Json serializable objects
     schema = PostSchema(many=True)

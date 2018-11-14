@@ -17,6 +17,21 @@
   letter-spacing: 0.11em;
 }
 
+.post {
+  margin-bottom: 5em;
+}
+
+.post__date {
+  margin-bottom: 1em;
+  font-size: 0.75em;
+  color: palette(grey, light);
+}
+
+.post_content {
+  margin: 2em 0;
+  padding-right: 10%;
+}
+
 @media screen and (min-width: 1024px) and (orientation: portrait) {
 
   .change-orientation {

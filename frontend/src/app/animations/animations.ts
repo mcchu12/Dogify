@@ -5,8 +5,8 @@ export function fade() {
     transition(':enter', [
       style({opacity: 0}),
       group([
-        animate('500ms ease-in-out', style({opacity: 1})),
         sequence([
+          animate('500ms ease-in-out', style({opacity: 1})),
           query('.hero-title', animateChild(), { optional: true }),
           query('.main', animateChild()),
         ])

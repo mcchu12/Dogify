@@ -19,6 +19,7 @@ export class BlogComponent implements OnInit {
     this.http.get('http://localhost:5000/api/blog').subscribe(
       res => {
         this.posts = res;
+        console.log(this.posts);
         this.postItems.changes.subscribe(() => this.resizeAllGridItems());
       }
     );
@@ -29,7 +30,7 @@ export class BlogComponent implements OnInit {
     const gridAttr = window.getComputedStyle(grid);
     const rowHeight = parseInt(gridAttr.getPropertyValue('grid-auto-rows'), 10);
     const rowGap = parseInt(gridAttr.getPropertyValue('grid-row-gap'), 10);
-    const contentHeight = item.querySelector('.post-content').getBoundingClientRect().height;
+    const contentHeight = item.querySelector('.post-preview').getBoundingClientRect().height;
     const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
     item.style.gridRowEnd = 'span ' + rowSpan;
   }
