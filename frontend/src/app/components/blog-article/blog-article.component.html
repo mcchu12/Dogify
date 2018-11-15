@@ -1,4 +1,4 @@
 <app-container *ngIf="post" [isBlog]="true" [blogTitle]="post.title" [blogThumbnail]=post.thumbnail>
   <div class="post__date">{{ post.date_posted | date:"longDate" }}</div>
-  <div class="post_content" [innerHTML]="post.content"></div>
+  <div class="post__content" [innerHTML]="post.content"></div>
 </app-container>

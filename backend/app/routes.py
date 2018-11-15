@@ -2,7 +2,7 @@ import os
 import shutil
 import glob
 
-from flask import request, jsonify
+from flask import render_template, request, jsonify
 from sqlalchemy import desc
 
 from app import app
@@ -17,7 +17,7 @@ classifier = BreedClassifier()
 
 @app.route("/")
 def index():
-    return 'Welcome to Dogify backend server!'
+    return render_template('index.html')
 
 @app.route('/api/predict', methods=['POST'])
 def predict():
@@ -32,7 +32,7 @@ def predict():
     return jsonify(breed=breed, temparement=temparement)
 
 @app.route('/api/blog')
-def blog():
+def get_blogs():
     # fetch posts from database
     session = db.session()
     post_objects = session.query(Post).order_by(Post.date_posted.desc()).all()
@@ -55,3 +55,10 @@ def post(id):
   session.close()
   return jsonify(post)
   
+@app.route('/author')
+def add_author():
+  return render_template('author.html')
+
+@app.route('/blog')
+def blog():
+  return render_template('blog.html')
