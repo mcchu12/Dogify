@@ -1,1 +1,12 @@
+.post__nav {
+  margin-top: 2em;
 
+  button {
+    display: block;
+    float: left;
+  }
+
+  button ~ button {
+    float: right;
+  }
+}

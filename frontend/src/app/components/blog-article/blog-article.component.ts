@@ -1,9 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BlogService } from 'src/app/services/blog.service';
+import { switchMap } from 'rxjs/operators';
 
 import { Post } from '../../shared/post';
-import { switchMap } from 'rxjs/operators';
+import { BlogService } from 'src/app/services/blog.service';
+
+import { faArrowLeft, faArrowRight, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-blog-article',
@@ -18,6 +20,9 @@ export class BlogArticleComponent implements OnInit {
   prev: number;
   next: number;
 
+  icArrowLeft: IconDefinition;
+  icArrowRight: IconDefinition;
+
   constructor(
     @Inject('BaseUrl') public BaseUrl,
     private blogService: BlogService,
@@ -25,8 +30,6 @@ export class BlogArticleComponent implements OnInit {
     }
 
   ngOnInit() {
-    // const id = +this.route.snapshot.params['id'];
-
     this.blogService.getPostIds().subscribe(
       res => {
         this.postIds = res;
@@ -35,6 +38,8 @@ export class BlogArticleComponent implements OnInit {
       err => console.log(err)
     );
 
+    this.icArrowLeft = faArrowLeft;
+    this.icArrowRight = faArrowRight;
   }
 
   private getPost() {
@@ -56,8 +61,8 @@ export class BlogArticleComponent implements OnInit {
 
   private setPrevNext(currentId: number) {
     const i =  this.postIds.indexOf(currentId);
-    this.prev = this.postIds[(this.postIds.length + i - 1) % this.postIds.length];
-    this.next = this.postIds[(this.postIds.length + i + 1) % this.postIds.length];
+    this.next = this.postIds[(this.postIds.length + i - 1) % this.postIds.length];
+    this.prev = this.postIds[(this.postIds.length + i + 1) % this.postIds.length];
   }
 
 }

@@ -3,11 +3,29 @@
   [isBlog]="true" 
   [blogTitle]="post.title" 
   [blogThumbnail]="BaseUrl + post.thumbnail">
+
     <div class="post__date">{{ post.date_posted | date:"longDate" }}</div>
+
     <div class="post__content" [innerHTML]="post.content"></div>
 
+    <div class="post__author" fxFlex *ngIf="post.author">
+      <mat-card>
+        <mat-list fxflex>
+          <mat-list-item>
+            <img matListAvatar src="{{BaseUrl + post.author.avatar}}" alt={{post.author.name}}>
+            <h5 matLine>{{ post.author.name }}</h5>
+            <p matLine>{{ post.author.introduction }}</p>
+          </mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
+
     <div class="post__nav">
-      <button mat-button [routerLink]="['/article', prev]">Prev</button>
-      <button mat-button [routerLink]="['/article', next]">Next</button>
+      <button mat-button [routerLink]="['/article', prev]">
+        <fa-icon [icon]="icArrowLeft"></fa-icon> Prev
+      </button>
+      <button mat-button [routerLink]="['/article', next]">
+        Next <fa-icon [icon]="icArrowRight"></fa-icon>
+      </button>
     </div>
 </app-container>

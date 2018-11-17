@@ -2,10 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouteReuseStrategy } from '@angular/router';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
@@ -22,6 +25,7 @@ import { BreedClassificationService } from './services/breed-classification.serv
 import { BlogService } from './services/blog.service';
 
 import { BaseUrl } from './shared/constants';
+import { CustomRouteReuse } from './shared/routeReuse';
 import { RestangularConfigFatory } from './shared/restConfig';
 import { RestangularModule } from 'ngx-restangular';
 
@@ -44,12 +48,15 @@ import { RestangularModule } from 'ngx-restangular';
     FlexLayoutModule,
     MatIconModule,
     MatButtonModule,
+    MatListModule,
+    MatCardModule,
     FontAwesomeModule,
     RestangularModule.forRoot(RestangularConfigFatory)
   ],
   providers: [
     BreedClassificationService,
     BlogService,
+    {provide: RouteReuseStrategy, useClass: CustomRouteReuse},
     {provide: 'BaseUrl', useValue: BaseUrl},
   ],
   bootstrap: [AppComponent]
