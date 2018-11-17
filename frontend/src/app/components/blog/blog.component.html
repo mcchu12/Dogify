@@ -8,7 +8,7 @@
           
           <ng-container *ngIf="post.thumbnail">
             <div class="thumbnail" *ngIf="post.thumbnail">
-              <img src="{{ post.thumbnail }}" alt="" (load)="resizeAllGridItems()">  
+              <img src="{{ BaseUrl + post.thumbnail }}" alt="" (load)="resizeAllGridItems()">  
             </div>
           </ng-container>
 

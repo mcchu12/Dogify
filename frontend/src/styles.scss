@@ -32,6 +32,16 @@
   padding-right: 10%;
 }
 
+.source {
+  margin-top: 1em;
+  font-size: 0.75em;
+  color: palette(grey);
+
+  a {
+    font-style: italic;
+  }
+}
+
 @media screen and (min-width: 1024px) and (orientation: portrait) {
 
   .change-orientation {

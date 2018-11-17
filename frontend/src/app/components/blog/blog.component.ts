@@ -1,5 +1,8 @@
-import { Component, OnInit, ElementRef, AfterViewInit, HostListener, ViewChildren, QueryList} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Inject, ElementRef, HostListener, ViewChildren, QueryList} from '@angular/core';
+
+import { BlogService } from '../../services/blog.service';
+
+import { Post } from '../../shared/post';
 
 @Component({
   selector: 'app-blog',
@@ -8,20 +11,23 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BlogComponent implements OnInit {
 
-  posts: any;
+  posts: Post[];
 
   @ViewChildren('item') postItems: QueryList<any>;
 
-  constructor(private http: HttpClient, private el: ElementRef) {
+  constructor(
+    @Inject('BaseUrl') public BaseUrl,
+    private el: ElementRef,
+    private blogService: BlogService) {
    }
 
   ngOnInit() {
-    this.http.get('http://localhost:5000/api/blog').subscribe(
+    this.blogService.getPosts().subscribe(
       res => {
         this.posts = res;
-        console.log(this.posts);
         this.postItems.changes.subscribe(() => this.resizeAllGridItems());
-      }
+      },
+      err => console.log(err)
     );
   }
 
