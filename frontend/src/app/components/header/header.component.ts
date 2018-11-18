@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, Inject, EventEmitter, Output } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 
 import { faBars, faEllipsisV, IconDefinition } from '@fortawesome/free-solid-svg-icons';
@@ -12,14 +12,16 @@ export class HeaderComponent implements OnInit {
 
   @ViewChild('nav') nav;
 
+  @Output() toggleEmitter = new EventEmitter();
+
   menuToggle = false;
-  sidebarToggle = false;
+  sidenavToggle = false;
 
   icMenu: IconDefinition;
   icMore: IconDefinition;
 
   navbarHeight: number;
-  navDark: boolean;
+  navScrolled: boolean;
 
   constructor(@Inject(DOCUMENT) private document: Document) {
   }
@@ -36,6 +38,10 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  toggleSidenav() {
+    this.toggleEmitter.emit();
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const pos = window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
@@ -43,9 +49,9 @@ export class HeaderComponent implements OnInit {
     const windowWidth = window.innerWidth;
     // Check scroll position and window width
     if (pos > heroHeight && windowWidth < 960) {
-      this.navDark = true;
+      this.navScrolled = true;
     } else if (pos < heroHeight && windowWidth < 960) {
-      this.navDark = false;
+      this.navScrolled = false;
     }
   }
 

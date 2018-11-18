@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
@@ -50,6 +51,7 @@ import { RestangularModule } from 'ngx-restangular';
     MatButtonModule,
     MatListModule,
     MatCardModule,
+    MatSidenavModule,
     FontAwesomeModule,
     RestangularModule.forRoot(RestangularConfigFatory)
   ],

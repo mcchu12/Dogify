@@ -1,7 +1,7 @@
 <header
   class="navbar" 
   ngClass.gt-sm="navbar--gt-sm"
-  [ngClass]="{'navbar--dark': navDark}"
+  [ngClass]="{'navbar--scrolled': navScrolled}"
   fxLayout="row"
   fxLayoutAlign="start center"
 >
@@ -30,7 +30,7 @@
   
   </nav>
 
-  <button class="sidebar-toggle">
+  <button class="sidebar-toggle" (click)="toggleSidenav()">
       <fa-icon [icon]="icMore"></fa-icon>
   </button>
 

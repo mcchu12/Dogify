@@ -42,6 +42,10 @@
   }
 }
 
+.mat-drawer-backdrop.mat-drawer-shown {
+  background-color: transparent!important;
+}
+
 @media screen and (min-width: 1024px) and (orientation: portrait) {
 
   .change-orientation {
