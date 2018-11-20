@@ -29,6 +29,7 @@ import { BaseUrl } from './shared/constants';
 import { CustomRouteReuse } from './shared/routeReuse';
 import { RestangularConfigFatory } from './shared/restConfig';
 import { RestangularModule } from 'ngx-restangular';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { RestangularModule } from 'ngx-restangular';
     HeaderComponent,
     ContainerComponent,
     BlogArticleComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,

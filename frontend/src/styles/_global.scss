@@ -51,6 +51,24 @@ h5 {font-size: 1em;}
 
 h6 {font-size: 0.75em;}
 
+input[type='text'], input[type='date'] {
+  width: 100%;
+  padding: 1em;
+  margin: 1em 0;
+  box-sizing: border-box;
+  border: 1px solid $black;
+  border-radius: 6px;
+
+  &:focus {
+    border-radius: 0;
+  }
+}
+
+input[type='date'] {
+  background-color: transparent;
+  appearance: none;
+}
+
 fa-icon {
   display: inline-block;
 }

@@ -8,6 +8,8 @@ $black: #3D3D3D;
 // Color Palette Modifiers
 $color-palettes: (
   grey: (
+    xx-light: transparentize($black, 0.75),
+    x-light: transparentize($black, 0.5),
     light : transparentize($black, 0.29),
     base  : transparentize($black, 0.14),
     dark  : transparentize($black, 0.04),

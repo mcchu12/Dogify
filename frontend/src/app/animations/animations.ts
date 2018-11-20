@@ -4,12 +4,13 @@ export function fade() {
   return trigger('fade', [
     transition(':enter', [
       style({opacity: 0}),
-      group([
-        sequence([
-          animate('500ms ease-in-out', style({opacity: 1})),
-          query('.hero-title', animateChild(), { optional: true }),
-          query('.main', animateChild()),
-        ])
+      sequence([
+        animate('500ms ease-in-out', style({opacity: 1})),
+        query('.hero-title', animateChild(), { optional: true }),
+        query('.main', sequence([
+          animate('0s', style({backgroundColor: 'transparent'})),
+          animateChild(),
+        ])),
       ])
     ]),
     transition(':leave', [

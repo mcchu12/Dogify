@@ -4,12 +4,8 @@
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
 
 .text-center { text-align: center; }
-.text-left { text-align: left; }
 
-.btn--gt-xs {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
+.text-left { text-align: left; }
 
 .sub-title {
   padding: 0;
@@ -42,8 +38,18 @@
   }
 }
 
+.btn--gt-xs {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+
 .mat-drawer-backdrop.mat-drawer-shown {
   background-color: transparent!important;
+}
+
+.mat-drawer-inner-container:-webkit-scrollbar {
+  display: none;
 }
 
 @media screen and (min-width: 1024px) and (orientation: portrait) {

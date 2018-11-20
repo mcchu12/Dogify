@@ -1,5 +1,17 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="push" position="end"><h1>Hello World</h1></mat-sidenav>
+  <mat-sidenav 
+    #sidenav
+    class="sidenav"
+    ngClass.gt-xs="sidenav--gt-xs" 
+    mode="push" 
+    position="end"
+    [fixedInViewport]="true">
+
+    <button class="sidenav__btn-close" (click)="sidenav.close()">&times;</button>
+
+    <app-sidenav></app-sidenav>
+
+  </mat-sidenav>
 
   <mat-sidenav-content>
 

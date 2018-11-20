@@ -1,0 +1,61 @@
+<div class="about">
+    <h5>About</h5>
+    <p>
+      Our mission at Dogify is to be able to provide peace of mind to you knowing that your 
+      baby receiving the best care possible. Our foundation is built upon a team of highly 
+      trained and dedicated pet care professionals.
+    </p>
+  </div>
+
+  <div class="booking">
+    <h5>Book a service</h5>
+    <form class="form--booking">
+
+      <div class="service-options">
+          <div class="option">
+              <input id="dog-walking" type="radio" name="service" value="dog-walking" checked> 
+              <label for="dog-walking">
+                <fa-icon [icon]="icRoute"></fa-icon>
+                <div>Dog Walking</div>
+              </label>
+            </div>
+      
+            <div class="option">
+              <input id="tricks-training" type="radio" name="service" value="tricks-training">
+              <label for="tricks-training">
+                <fa-icon [icon]="icBone"></fa-icon>
+                <div>Tricks Training</div>
+              </label>
+            </div>
+      
+            <div class="option">
+              <input id="house-sitting" type="radio" name="service" value="house-sitting">
+              <label for="house-sitting">
+                <fa-icon [icon]="icHome"></fa-icon>
+                <div>House sitting</div>
+              </label>
+            </div>
+      
+            <div class="option">
+              <input id="pet-boarding" type="radio" name="service" value="pet-boarding">
+              <label for="pet-boarding">
+                <fa-icon [icon]="icSuitcase"></fa-icon>
+                <div>Pet Boarding</div>
+              </label>
+            </div>
+      </div>
+
+      <div class="form__address">
+        <label class="form__label" for="address">Where is your address?</label>
+        <input id="address" type="text" placeholder="Postal Code or Address">
+      </div>
+
+      <div class="form__date">
+        <label class="form__label" for="date">What dates you need?</label>
+        <input id="date" type="date" placeholder="Postal Code or Address">
+      </div>
+
+      <button class="btn" ngClass.gt-xs="btn--gt-xs" mat-raised-button>Submit</button>
+
+    </form>
+  </div>

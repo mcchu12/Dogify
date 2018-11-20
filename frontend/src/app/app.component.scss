@@ -1,5 +1,16 @@
+@import 'helper';
+
+// :host {
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   top: 0;
+// }
+
 .page {
   position: relative;
+  background-color: $white;
 }
 
 // Prompt users to change to landscape mode
@@ -16,22 +27,31 @@
   top: 0;
   left: 0;
   display: none;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: palette(black, light);
   overflow-x: hidden;
-  color: white;
+  color: $white;
 }
 
 .change-orientation h3 {
   position: relative;
   top: 50%;
   text-align: center;
-  color: white;
+  color: $white;
 }
 
-:host {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
+.sidenav {
+  padding: 2em;
 }
+
+.sidenav--gt-xs {
+  width: 450px;
+}
+
+.sidenav__btn-close {
+  display: block;
+  margin-left: auto;
+  font-size: 1.777em;
+  color: palette(grey);
+}
+
+

@@ -1,0 +1,51 @@
+@import 'helper';
+
+.about {
+  margin: 2em 0;
+  padding: 1em 0;
+  border-bottom: 1px solid palette(grey, xx-light);
+  font-size: 0.85em;
+}
+
+.form--booking {
+  margin: 1em 0;
+}
+
+.form__label {
+  display: block;
+  font-size: 0.85em;
+  font-weight: 700;
+}
+
+.service-options {
+  margin-bottom: 1em; 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+}
+
+.option {
+  input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  label {
+    padding: 1em;
+    border: 1px solid palette(grey);
+    border-radius: 6px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  label fa-icon {
+    margin-bottom: 0.5em;
+  }
+
+  input[type='radio']:checked + label {
+    background-color: $black;
+    color: $white;  
+  }
+}
