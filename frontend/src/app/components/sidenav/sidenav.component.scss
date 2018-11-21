@@ -1,9 +1,12 @@
 @import 'helper';
 
-.about {
-  margin: 2em 0;
-  padding: 1em 0;
+:host > div {
+  margin: 2rem 0;
+  padding-bottom: 1rem;
   border-bottom: 1px solid palette(grey, xx-light);
+}
+
+.about, .social h5 {
   font-size: 0.85em;
 }
 
@@ -47,5 +50,17 @@
   input[type='radio']:checked + label {
     background-color: $black;
     color: $white;  
+  }
+}
+
+.mat-raised-button {
+  padding: 0.2em;
+}
+
+.social {
+  fa-icon {
+    margin-top: 1em;
+    margin-left: 1em;
+    cursor: pointer;
   }
 }

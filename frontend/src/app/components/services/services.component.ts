@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { faRoute, faBone, faHome, faSuitcaseRolling, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { SidenavToggleService } from 'src/app/services/sidenav-toggle.service';
 
 @Component({
   selector: 'app-services',
@@ -9,18 +9,13 @@ import { faRoute, faBone, faHome, faSuitcaseRolling, IconDefinition } from '@for
 })
 export class ServicesComponent implements OnInit {
 
-  icRoute: IconDefinition;
-  icBone: IconDefinition;
-  icHome: IconDefinition;
-  icSuitcase: IconDefinition;
-
-  constructor() { }
+  constructor(private sidenavToggleService: SidenavToggleService) { }
 
   ngOnInit() {
-    this.icRoute = faRoute;
-    this.icBone = faBone;
-    this.icHome = faHome;
-    this.icSuitcase = faSuitcaseRolling;
+  }
+
+  toggleSidenav() {
+    this.sidenavToggleService.toggleSidenav();
   }
 
 }

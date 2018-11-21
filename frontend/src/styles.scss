@@ -38,7 +38,14 @@
   }
 }
 
+.btn {
+  width: 100%;
+  background-color: $black;
+  color: white;
+}
+
 .btn--gt-xs {
+  width: auto;
   margin-left: auto !important;
   margin-right: auto !important;
 }
@@ -48,8 +55,10 @@
   background-color: transparent!important;
 }
 
-.mat-drawer-inner-container:-webkit-scrollbar {
-  display: none;
+.mat-drawer-inner-container {
+  width: 80%!important;
+  margin: auto;
+  overflow: initial!important;
 }
 
 @media screen and (min-width: 1024px) and (orientation: portrait) {

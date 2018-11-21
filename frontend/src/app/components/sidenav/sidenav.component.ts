@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { faRoute, faBone, faHome, faSuitcaseRolling, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
@@ -9,18 +7,9 @@ import { faRoute, faBone, faHome, faSuitcaseRolling, IconDefinition } from '@for
 })
 export class SidenavComponent implements OnInit {
 
-  icRoute: IconDefinition;
-  icBone: IconDefinition;
-  icHome: IconDefinition;
-  icSuitcase: IconDefinition;
-
   constructor() { }
 
   ngOnInit() {
-    this.icRoute = faRoute;
-    this.icBone = faBone;
-    this.icHome = faHome;
-    this.icSuitcase = faSuitcaseRolling;
   }
 
 }

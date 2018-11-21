@@ -26,6 +26,7 @@
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@fortawesome/fontawesome-free": "^5.4.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.6",
+    "@fortawesome/free-brands-svg-icons": "^5.4.1",
     "@fortawesome/free-solid-svg-icons": "^5.4.1",
     "@tensorflow/tfjs": "^0.13.3",
     "@tensorflow/tfjs-node": "^0.1.19",

@@ -42,6 +42,10 @@ export class BlogComponent implements OnInit {
   }
 
   private resizeAllGridItems() {
+    const windowWidth = window.innerWidth;
+    if (windowWidth < 600) {
+      return;
+    }
     const items = this.el.nativeElement.querySelectorAll('.post');
     items.forEach(element => {
       this.resizeGridItem(element);
@@ -50,10 +54,7 @@ export class BlogComponent implements OnInit {
 
   @HostListener('window:resize')
   onResize() {
-    const windowWidth = window.innerWidth;
-    if (windowWidth >= 600) {
-      this.resizeAllGridItems();
-    }
+    this.resizeAllGridItems();
   }
 
 }

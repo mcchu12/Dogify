@@ -40,11 +40,13 @@
 }
 
 .sidenav {
-  padding: 2em;
+  padding: 2em 0;
 }
 
 .sidenav--gt-xs {
   width: 450px;
+  margin-right: -1em;
+  overflow-y: scroll;
 }
 
 .sidenav__btn-close {
@@ -53,5 +55,6 @@
   font-size: 1.777em;
   color: palette(grey);
 }
+
 
 
