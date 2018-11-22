@@ -32,8 +32,6 @@ import { SidenavToggleService } from './services/sidenav-toggle.service';
 // Others
 import { BaseUrl } from './shared/constants';
 import { CustomRouteReuse } from './shared/routeReuse';
-import { RestangularConfigFatory } from './shared/restConfig';
-import { RestangularModule } from 'ngx-restangular';
 
 // FontAwesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -65,7 +63,6 @@ import { faFacebookSquare, faInstagram, faGooglePlusSquare, faYoutubeSquare, faT
     MatCardModule,
     MatSidenavModule,
     FontAwesomeModule,
-    RestangularModule.forRoot(RestangularConfigFatory)
   ],
   providers: [
     BreedClassificationService,

@@ -64,3 +64,11 @@
     cursor: pointer;
   }
 }
+
+.copyright {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  display: block;
+  font-size: 0.75em;
+  color: palette(grey, light)
+}

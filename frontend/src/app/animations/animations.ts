@@ -19,21 +19,6 @@ export function fade() {
   ]);
 }
 
-export function bounceIn() {
-  return trigger('bounceIn', [
-    transition(':enter', [
-      animate('0.75s cubic-bezier(0.215, 0.61, 0.355, 1)', keyframes([
-        style({opacity: 0, transform: 'scale3d(0.3, 0.3, 0.3)'}),
-        style({transform: 'scale3d(0.9, 0.9, 0.9)'}),
-        style({opacity: 1, transform: 'scale3d(1.03, 1.03, 1.03)'}),
-        style({transform: 'scale3d(0.97, 0.97, 0.97)'}),
-        style({transform: 'scale3d(0.9, 0.9, 0.9)'}),
-        style({opacity: 1, transform: 'scale3d(1, 1, 1)'}),
-      ]))
-    ])
-  ]);
-}
-
 export function fadeInLeft() {
   return trigger('fadeInLeft', [
     state('*', style({
