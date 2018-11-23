@@ -11,6 +11,7 @@ export function fade() {
           animate('0s', style({backgroundColor: 'transparent'})),
           animateChild(),
         ])),
+        query('.social--light', animateChild(), { optional: true }),
       ])
     ]),
     transition(':leave', [

@@ -8,6 +8,14 @@
   <ng-container *ngIf="showTitle">
     <h1 [@fadeInLeft]="showTitle ? true : false" class="hero-title">{{ isBlog ? blogTitle : title }}</h1>
   </ng-container>
+
+  <div class="social social--light" fxHide fxShow.gt-sm [@fadeInLeft]="animated">
+    <fa-icon [icon]="['fab', 'facebook-square']"></fa-icon>
+    <fa-icon [icon]="['fab', 'instagram']"></fa-icon>
+    <fa-icon [icon]="['fab', 'twitter-square']"></fa-icon>
+    <fa-icon [icon]="['fab', 'google-plus-square']"></fa-icon>
+    <fa-icon [icon]="['fab', 'youtube-square']"></fa-icon>
+  </div>
   
 </div>
 

@@ -61,6 +61,14 @@
   overflow: initial!important;
 }
 
+.social {
+  fa-icon {
+    margin-top: 1em;
+    margin-left: 1em;
+    cursor: pointer;
+  }
+}
+
 @media screen and (min-width: 1024px) and (orientation: portrait) {
 
   .change-orientation {
