@@ -72,3 +72,77 @@ input[type='date'] {
 fa-icon {
   display: inline-block;
 }
+
+.text-center { text-align: center; }
+
+.text-left { text-align: left; }
+
+.sub-title {
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+}
+
+.post {
+  margin-bottom: 5em;
+}
+
+.post__date {
+  margin-bottom: 1em;
+  font-size: 0.75em;
+  color: palette(grey, light);
+}
+
+.post__content {
+  margin: 2em 0;
+  padding-right: 10%;
+}
+
+.source {
+  margin-top: 1em;
+  font-size: 0.75em;
+  color: palette(grey);
+
+  a {
+    font-style: italic;
+  }
+}
+
+.btn {
+  width: 100%;
+  background-color: $black;
+  color: white;
+}
+
+.btn--gt-xs {
+  width: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+
+.mat-drawer-backdrop.mat-drawer-shown {
+  background-color: transparent!important;
+}
+
+.mat-drawer-inner-container {
+  width: 80%!important;
+  margin: auto;
+  overflow: initial!important;
+}
+
+.social {
+  fa-icon {
+    margin-top: 1em;
+    margin-left: 1em;
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 1024px) and (orientation: portrait) {
+
+  .change-orientation {
+    display: block !important;
+  } 
+
+}

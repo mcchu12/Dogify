@@ -20,7 +20,10 @@
             {{ post.preview }}
           </p>
 
-          <button class="sub-title btn--blog" [routerLink]="['/article', post.id]">Read More</button>
+          <button class="sub-title btn--blog" [routerLink]="['/article', post.id]">
+            Read More
+            <fa-icon [icon]="['fas', 'arrow-alt-circle-right']"></fa-icon>
+          </button>
         
         </div>
       

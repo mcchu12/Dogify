@@ -21,7 +21,11 @@
   font-weight: 700;
   color: $black;
 
-  &:hover {
-    text-decoration: underline;
+  fa-icon {
+    transition: transform 300ms;
+  }
+
+  &:hover fa-icon {
+    transform: translateX(50%);  
   }
 }

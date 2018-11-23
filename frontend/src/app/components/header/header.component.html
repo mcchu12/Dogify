@@ -19,12 +19,12 @@
     <button class="btn-close" fxHide.gt-sm (click)="toggleMenu()">&times;</button>
     
     <div
+      class="sibling-fade"
       ngClass="nav__links"
       [ngClass.gt-sm]="{'nav__links': false}"    
     >
       <a routerLink="/services" (click)="toggleMenu()">Services</a>
       <a routerLink="/breeds" (click)="toggleMenu()">Breeds</a>
-      <a routerLink="/" (click)="toggleMenu()">Tools</a>
       <a routerLink="/blog" (click)="toggleMenu()">Blog</a>
     </div>
   

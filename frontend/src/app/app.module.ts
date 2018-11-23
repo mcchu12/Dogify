@@ -36,7 +36,7 @@ import { CustomRouteReuse } from './shared/routeReuse';
 // FontAwesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faRoute, faBone, faHome, faSuitcaseRolling, faPaw } from '@fortawesome/free-solid-svg-icons';
+import { faRoute, faBone, faHome, faSuitcaseRolling, faPaw, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookSquare, faInstagram, faGooglePlusSquare, faYoutubeSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
@@ -77,7 +77,7 @@ export class AppModule {
 
   constructor() {
     library.add(
-      faRoute, faBone, faHome, faSuitcaseRolling, faPaw,
+      faRoute, faBone, faHome, faSuitcaseRolling, faPaw, faArrowAltCircleRight,
       faFacebookSquare, faInstagram, faGooglePlusSquare, faYoutubeSquare, faTwitterSquare
     );
   }
