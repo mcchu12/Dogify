@@ -1,19 +1,16 @@
 import os
-import shutil
-import glob
 
 from flask import render_template, request, jsonify, url_for
 from sqlalchemy import desc
 
 from app import app
 from app import db
+from app import classifier
 from app.model import Post, PostSchema, Author, AuthorSchema
 from app.classifier import BreedClassifier
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_PATH =  os.path.join(APP_ROOT, 'static/upload')
-
-classifier = BreedClassifier()
+UPLOAD_PATH =  os.path.join(APP_ROOT, 'upload')
 
 @app.route("/")
 def index():

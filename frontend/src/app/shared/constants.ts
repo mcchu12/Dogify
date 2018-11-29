@@ -1,2 +1,1 @@
-export const kBaseImgUrl = 'http://localhost:4200/assets/img';
-export const BaseUrl = 'http://localhost:5000/';
+export const BaseUrl = 'https://vast-gorge-89004.herokuapp.com/';

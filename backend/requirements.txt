@@ -1,0 +1,8 @@
+numpy
+pandas
+Flask-Cors
+Flask-SQLAlchemy
+marshmallow
+Keras
+tensorflow
+Pillow
