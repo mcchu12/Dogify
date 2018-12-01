@@ -25,6 +25,7 @@ export class BlogComponent implements OnInit {
     this.blogService.getPosts().subscribe(
       res => {
         this.posts = res;
+        console.log(res);
         this.postItems.changes.subscribe(() => this.resizeAllGridItems());
       },
       err => console.log(err)

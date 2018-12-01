@@ -3,6 +3,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { faPlus, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { BreedClassificationService } from '../../services/breed-classification.service';
 
+import { Breed } from '../../shared/breed';
+
 @Component({
   selector: 'app-breeds',
   templateUrl: './breeds.component.html',
@@ -13,14 +15,15 @@ export class BreedsComponent implements OnInit {
 
   icPlus: IconDefinition;
   preview: string;
-  test: boolean;
-  breed: Object;
+  isProcessing: boolean;
+  breed: Breed;
   reader: FileReader;
 
   constructor(
     @Inject('BaseUrl') private BaseUrl,
     private breedService: BreedClassificationService) {
       this.preview = this.BaseUrl + 'static/img/preview.jpg';
+      this.breed = { breed: 'Poodle', temparement: 'Active, Proud, Very Smart' };
    }
 
   ngOnInit() {
@@ -39,19 +42,16 @@ export class BreedsComponent implements OnInit {
     const file = event.target.files[0];
 
     if (file) {
-      this.test = true;
+      this.isProcessing = true;
       // Upload to server to predict
       this.breedService.predict(file).subscribe(
         res => {
           this.reader.readAsDataURL(file);
           this.breed = res;
-          this.test = false;
+          this.isProcessing = false;
         },
         err => {
-          this.breed = {
-            breed: 'Something went wrong',
-            temparement: 'Try again'
-          };
+          this.breed = { breed: 'Something went wrong', temparement: 'Try again' };
           console.log(err);
         }
       );

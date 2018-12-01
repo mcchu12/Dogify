@@ -1,1 +1,1 @@
-export const BaseUrl = 'https://vast-gorge-89004.herokuapp.com/';
+export const BaseUrl = 'https://dogifyapi.herokuapp.com/';

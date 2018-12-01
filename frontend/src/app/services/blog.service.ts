@@ -15,11 +15,11 @@ export class BlogService {
     private http: HttpClient) { }
 
   getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.BaseUrl + 'api/blog');
+    return this.http.get(this.BaseUrl + 'api/blog').pipe(map(res => res[0]));
   }
 
   getPost(id: number): Observable<Post> {
-    return this.http.get<Post>(this.BaseUrl + 'api/blog/' + id);
+    return this.http.get(this.BaseUrl + 'api/blog/' + id).pipe(map(res => res[0]));
   }
 
   getPostIds(): Observable<number[] | any> {

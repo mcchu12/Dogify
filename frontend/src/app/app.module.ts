@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 // Components
 import { AppComponent } from './app.component';
@@ -62,6 +63,7 @@ import { faFacebookSquare, faInstagram, faGooglePlusSquare, faYoutubeSquare, faT
     MatListModule,
     MatCardModule,
     MatSidenavModule,
+    MatProgressBarModule,
     FontAwesomeModule,
   ],
   providers: [

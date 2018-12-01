@@ -1,12 +1,22 @@
 @import 'variables';
 
 .classification {
+    position: relative;
+}
+
+.result {
     opacity: 1;
     transition: opacity 500ms;
 }
 
-.test {
+.isProcessing {
     opacity: 0;
+}
+.processing {
+    width: 100%;
+    position: absolute;
+    top: 3em;
+    text-align: center;
 }
 
 .preview {
@@ -19,7 +29,7 @@
     background-repeat: no-repeat;
 }
 
-.result {
+.breed {
     margin: 0 5vw 2em;
     text-align: center;
 

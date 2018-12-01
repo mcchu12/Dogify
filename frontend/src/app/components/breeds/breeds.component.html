@@ -6,19 +6,25 @@
     when meeting a four-legged stranger:
     <strong>what kind of good pup is that?</strong>
   </p>
-  
-  <div class="classification" [ngClass]="{'test': test}">
 
-    <div class="preview" [ngStyle]="{ 'background-image': 'url(' + preview + ')' }">
-      </div>
+  <div class="classification">
+    <ng-container *ngIf="isProcessing">
+        <div class="processing">
+          <p>Processing...</p>
+          <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar> 
+        </div>
+      </ng-container>
+      
+      <div class="result" [ngClass]="{'isProcessing': isProcessing}">
     
-      <ng-container *ngIf="breed">
-        <div class="result">
+        <div class="preview" [ngStyle]="{ 'background-image': 'url(' + preview + ')' }"></div>
+        
+        <div class="breed">
           <h4>{{ breed.breed }}</h4>
           <p>{{ breed.temparement }}</p>
         </div>
-      </ng-container> 
-
+    
+      </div>
   </div>
    
   <input fxHide #imgPicker type="file" accept=".png, .jpg, .jpeg" (change)="onImgSelected($event)">
