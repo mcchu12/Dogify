@@ -1,1 +1,1 @@
-export const BaseUrl = 'https://dogifyapi.herokuapp.com/';
+export const BaseUrl = 'http://localhost:5000/';

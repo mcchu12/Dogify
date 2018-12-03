@@ -22,7 +22,7 @@
 .service:hover {
     fa-icon {
         -webkit-animation: spin 2s cubic-bezier(0, 0.45, 0.32, 1.28);
-        animation: spin 2s cubic-bezier(0, 0.45, 0.32, 1.28);
+        animation: pulse 2s cubic-bezier(0, 0.45, 0.32, 1.28);
     }
 }
 
@@ -32,7 +32,26 @@
     border-radius: 6px;
 }
 
-@keyframes spin {
-    from {transform: rotateZ(0deg);}
-    to {transform: rotateZ(360deg);}
+// from animate.css -http://daneden.me/animate
+
+@keyframes pulse {
+    from {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  
+    50% {
+      -webkit-transform: scale3d(1.05, 1.05, 1.05);
+      transform: scale3d(1.05, 1.05, 1.05);
+    }
+  
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+}
+  
+.pulse {
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
 }

@@ -1,4 +1,4 @@
-import { trigger, state, style, animate, transition, keyframes, query, animateChild, group, sequence } from '@angular/animations';
+import { trigger, state, style, animate, transition, keyframes, query, animateChild, sequence } from '@angular/animations';
 
 export function fade() {
   return trigger('fade', [
