@@ -1,36 +1,47 @@
 <app-container>
   <p>
-    AI may be busy taking over the world.
-    However, they can certainly help us answer
-    an ubiquitous question that we all ask
-    when meeting a four-legged stranger:
+    AI may be busy taking over the world. However, they can certainly help us
+    answer an ubiquitous question that we all ask when meeting a four-legged
+    stranger:
     <strong>what kind of good pup is that?</strong>
+  </p>
+  <p class="instruction">
+    <em> Select an image and find out who they are.</em>
   </p>
 
   <div class="classification">
     <ng-container *ngIf="isProcessing">
-        <div class="processing">
-          <p>Processing...</p>
-          <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar> 
-        </div>
-      </ng-container>
-      
-      <div class="result" [ngClass]="{'isProcessing': isProcessing}">
-    
-        <div class="preview" [ngStyle]="{ 'background-image': 'url(' + preview + ')' }"></div>
-        
-        <div class="breed">
-          <h4>{{ breed.breed }}</h4>
-          <p>{{ breed.temparement }}</p>
-        </div>
-    
+      <div class="processing">
+        <p>Processing...</p>
+        <mat-progress-bar
+          mode="indeterminate"
+          color="accent"
+        ></mat-progress-bar>
       </div>
+    </ng-container>
+
+    <div class="result" [ngClass]="{ isProcessing: isProcessing }">
+      <div
+        class="preview"
+        [ngStyle]="{ 'background-image': 'url(' + preview + ')' }"
+      ></div>
+
+      <div class="breed">
+        <h4>{{ breed.breed }}</h4>
+        <p>{{ breed.temparement }}</p>
+      </div>
+    </div>
   </div>
-   
-  <input fxHide #imgPicker type="file" accept=".png, .jpg, .jpeg" (change)="onImgSelected($event)">
+
+  <input
+    fxHide
+    #imgPicker
+    type="file"
+    accept=".png, .jpg, .jpeg"
+    (change)="onImgSelected($event)"
+  />
 
   <button mat-fab class="fab" (click)="imgPicker.click()">
     <fa-icon [icon]="icPlus"></fa-icon>
   </button>
-  
 </app-container>

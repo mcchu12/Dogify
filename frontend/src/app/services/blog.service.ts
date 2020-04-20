@@ -11,20 +11,20 @@ import { Post } from '../shared/post';
 export class BlogService {
 
   constructor(
-    @Inject('BaseUrl') private BaseUrl,
+    @Inject('BaseUrl') private BaseUrl: String,
     private http: HttpClient) { }
 
   getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.BaseUrl + 'api/blog');
+    return this.http.get<Post[]>(this.BaseUrl + 'api/blogs');
   }
 
   getPost(id: number): Observable<Post> {
-    return this.http.get<Post>(this.BaseUrl + 'api/blog/' + id);
+    return this.http.get<Post>(this.BaseUrl + 'api/blogs/' + id);
   }
 
   getPostIds(): Observable<number[] | any> {
     return this.getPosts()
-    .pipe(map(posts => posts.map(post => post.id)))
-    .pipe(catchError(error => error));
+      .pipe(map(posts => posts.map(post => post.id)))
+      .pipe(catchError(error => error));
   }
 }

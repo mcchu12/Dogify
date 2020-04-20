@@ -1,14 +1,10 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% block body %}
 
-{% block body %}
+<div>
+  <h1 class="mb-3">Welcome to Dogify Backend</h1>
 
-  <div>
-    <h1 class="mb-3">Welcome to Dogify Backend</h1>
-
-    <p><a href="/author">Add new Arthor</a></p>
-    <p><a href="/blog">Add new Post</a></p>
-
-  </div>
-    
+  <p><a href="/api/add-author">Add new Arthor</a></p>
+  <p><a href="/api/add-blog">Add new Post</a></p>
+</div>
 
 {% endblock %}

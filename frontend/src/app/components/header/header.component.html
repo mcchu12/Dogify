@@ -1,39 +1,51 @@
 <header
-  class="navbar" 
+  class="navbar"
   ngClass.gt-sm="navbar--gt-sm"
-  [ngClass]="{'navbar--scrolled': navScrolled}"
+  [ngClass]="{ 'navbar--scrolled': navScrolled }"
   fxLayout="row"
   fxLayoutAlign="start center"
 >
-
   <button class="menu-toggle" fxHide.gt-sm (click)="toggleMenu()">
     <fa-icon [icon]="icMenu"></fa-icon>
   </button>
-  
-  <h3 class="logo" ngClass="text-center" ngClass.gt-sm="text-left" fxFlex="2 1 auto"><a routerLink="/">D.</a></h3>
-  
-  <nav #nav 
-    [ngClass]="{'nav': true, 'nav--expand': menuToggle}"
-    [ngClass.gt-sm]="{'nav': false, 'nav--gt-sm': true}"
+
+  <h3
+    class="logo"
+    ngClass="text-center"
+    ngClass.gt-sm="text-left"
+    fxFlex="2 1 auto"
   >
-    <button class="btn-close" fxHide.gt-sm (click)="toggleMenu()">&times;</button>
-    
-    <div
-      class="sibling-fade"
-      ngClass="nav__links"
-      [ngClass.gt-sm]="{'nav__links': false}"    
-    >
-      <a routerLink="/services" (click)="toggleMenu()">Services</a>
-      <a routerLink="/breeds" (click)="toggleMenu()">Breeds</a>
-      <a routerLink="/blog" (click)="toggleMenu()">Blog</a>
+    <a routerLink="/">D.</a>
+  </h3>
+
+  <nav fxHide fxShow.gt-sm class="nav--gt-sm">
+    <div class="sibling-fade">
+      <a routerLink="/services">Services</a>
+      <a routerLink="/breeds">Breeds</a>
+      <a routerLink="/blog">Blog</a>
     </div>
-  
+  </nav>
+
+  <nav
+    #mobileNav
+    [@navAnimation]="menuToggle ? 'open' : 'closed'"
+    class="nav--mobile"
+    fxHide.gt-sm
+  >
+    <button class="btn-close" (click)="toggleMenu()">
+      &times;
+    </button>
+
+    <div class="sibling-fade nav__links">
+      <a routerLink="/services" (click)="toggleMenu()"
+        ><span>01</span>Services</a
+      >
+      <a routerLink="/breeds" (click)="toggleMenu()"><span>02</span>Breeds</a>
+      <a routerLink="/blog" (click)="toggleMenu()"><span>03</span>Blog</a>
+    </div>
   </nav>
 
   <button class="sidebar-toggle" (click)="toggleSidenav()">
-      <fa-icon [icon]="icMore"></fa-icon>
+    <fa-icon [icon]="icMore"></fa-icon>
   </button>
-
-  
-
 </header>

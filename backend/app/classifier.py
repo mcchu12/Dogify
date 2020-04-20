@@ -5,6 +5,7 @@ from keras.applications.mobilenet import MobileNet, preprocess_input
 from keras.models import Sequential
 from keras.layers import Dense, GlobalAveragePooling2D
 
+
 class BreedClassifier:
 
     def __init__(self):
@@ -13,11 +14,13 @@ class BreedClassifier:
 
     def load_model(self):
         # Load full Keras model
-        self.dog_detector = MobileNet(input_shape=(224, 224, 3), weights='imagenet')
+        self.dog_detector = MobileNet(
+            input_shape=(224, 224, 3), weights='imagenet')
         self.dog_detector._make_predict_function()
 
         # Load Keras models without top layer
-        self.base = MobileNet(input_shape=(224, 224, 3), weights='imagenet', include_top=False)
+        self.base = MobileNet(input_shape=(224, 224, 3),
+                              weights='imagenet', include_top=False)
         self.base._make_predict_function()
 
         # Create top layer with pretrained weights
@@ -28,9 +31,10 @@ class BreedClassifier:
         self.model._make_predict_function()
 
     def load_breeds_data(self):
-        # Load breeds data 
+        # Load breeds data
         self.dog_names = pd.read_csv('app/data/breeds.csv').name.tolist()
-        self.dog_temparement = pd.read_csv('app/data/breeds.csv').temperament.tolist()
+        self.dog_temparement = pd.read_csv(
+            'app/data/breeds.csv').temperament.tolist()
         # Load imagenet classes
         self.imagenet = pd.read_csv('app/data/imagenet.txt').classes.tolist()
 
@@ -48,7 +52,7 @@ class BreedClassifier:
         # Check if the image contains dog
         predictions = self.dog_detector.predict(tensor)
         index = np.argmax(predictions)
-        # From 151 to 268 are dog breeds according to imagenet label 
+        # From 151 to 268 are dog breeds according to imagenet label
         return ((index <= 268) & (index >= 151)), index
 
     def extract_bottleneck(self, tensor):
@@ -69,4 +73,3 @@ class BreedClassifier:
             return self.dog_names[index], self.dog_temparement[index]
         else:
             return "No dog found", self.imagenet[imagenet_index]
-            

@@ -1,3 +1,6 @@
 {
-  "python.pythonPath": "C:\\Users\\Michael\\Anaconda3\\envs\\dogify-backend\\python.exe"
+  "python.pythonPath": "C:\\Users\\mcchu\\anaconda3\\envs\\dogify\\python.exe",
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": false
 }

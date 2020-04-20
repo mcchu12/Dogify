@@ -1,6 +1,6 @@
 import os
 
-from flask import render_template, request, jsonify, url_for
+from flask import render_template, request, jsonify, url_for, send_from_directory
 from sqlalchemy import desc
 
 from app import app
@@ -10,11 +10,13 @@ from app.model import Post, PostSchema, Author, AuthorSchema
 from app.classifier import BreedClassifier
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_PATH =  os.path.join(APP_ROOT, 'upload')
+UPLOAD_PATH = os.path.join(APP_ROOT, 'upload')
 
-@app.route("/")
+
+@app.route("/api")
 def index():
     return render_template('index.html')
+
 
 @app.route('/api/predict', methods=['POST'])
 def predict():
@@ -24,11 +26,12 @@ def predict():
     img.save(img_path)
     # Classify breed
     breed, temparement = classifier.classify(img_path)
-    # Delete image 
+    # Delete image
     os.remove(img_path)
     return jsonify(breed=breed, temparement=temparement)
 
-@app.route('/api/blog')
+
+@app.route('/api/blogs')
 def get_blogs():
     # fetch posts from database
     session = db.session()
@@ -36,60 +39,75 @@ def get_blogs():
 
     # transform into Json serializable objects
     schema = PostSchema(many=True)
-    posts = schema.dump(post_objects)
+    posts = schema.dump(post_objects)[0]
 
     # serialize as Json
     session.close()
+
     return jsonify(posts)
 
-@app.route('/api/blog/<id>')
+
+@app.route('/api/blogs/<id>')
 def get_post(id):
-  session = db.session()
-  post_object = session.query(Post).get(id)
+    session = db.session()
+    post_object = session.query(Post).get(id)
 
-  post = PostSchema().dump(post_object)
+    post = PostSchema().dump(post_object)[0]
 
-  session.close()
-  return jsonify(post)
-  
-@app.route('/author')
+    session.close()
+    return jsonify(post)
+
+
+@app.route('/api/add-author')
 def author():
-  return render_template('author.html')
+    return render_template('author.html')
 
-@app.route('/author', methods=['POST'])
+
+@app.route('/api/add-author', methods=['POST'])
 def add_author():
-  # create author object
-  posted_author = AuthorSchema(only=('name', 'avatar', 'introduction'))\
-    .load(request.form)
+    # create author object
+    posted_author = AuthorSchema(only=('name', 'avatar', 'introduction'))\
+        .load(request.form)
 
-  author = Author(**posted_author)
+    author = Author(**posted_author.data)
 
-  # add new author to database
-  session = db.session()
-  session.add(author)
-  session.commit()
+    # add new author to database
+    session = db.session()
+    session.add(author)
+    session.commit()
 
-  # return newly added author
-  new_author = AuthorSchema().dump(author)
-  return jsonify(new_author)
+    # return newly added author
+    new_author = AuthorSchema().dump(author)
+    return jsonify(new_author)
 
-@app.route('/blog')
+
+@app.route('/api/add-blog')
 def blog():
-  return render_template('blog.html')
+    return render_template('blog.html')
 
-@app.route('/blog', methods=['POST'])
+
+@app.route('/api/add-blog', methods=['POST'])
 def add_blog():
-  # create author object
-  posted_post = PostSchema(only=('title', 'thumbnail', 'author_id', 'preview', 'content'))\
-    .load(request.form)
+    # create author object
+    posted_post = PostSchema(only=('title', 'thumbnail', 'author_id', 'preview', 'content'))\
+        .load(request.form)
 
-  post = Post(**posted_post)
+    post = Post(**posted_post.data)
 
-  # add new author to database
-  session = db.session()
-  session.add(post)
-  session.commit()
+    # add new author to database
+    session = db.session()
+    session.add(post)
+    session.commit()
 
-  # return newly added author
-  new_post = PostSchema().dump(post)
-  return jsonify(new_post)
+    # return newly added author
+    new_post = PostSchema().dump(post)
+    return jsonify(new_post)
+
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + '/dist/' + path):
+        return send_from_directory(app.static_folder + '/dist', path)
+    else:
+        return send_from_directory(app.static_folder + '/dist', 'index.html')

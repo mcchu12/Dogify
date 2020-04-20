@@ -18,14 +18,14 @@ export class ContainerComponent implements OnInit {
 
   @Input() showTitle = true;
   @Input() isBlog = false;
-  @Input() blogTitle;
-  @Input() blogThumbnail;
+  @Input() blogTitle: String;
+  @Input() blogThumbnail: String;
 
   title: string;
   img: string;
 
   constructor(
-    @Inject('BaseUrl') private BaseUrl,
+    @Inject('BaseUrl') private BaseUrl: String,
     private router: Router) { }
 
   ngOnInit() {

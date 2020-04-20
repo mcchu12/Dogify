@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ElementRef, HostListener, ViewChildren, QueryList} from '@angular/core';
+import { Component, OnInit, Inject, ElementRef, HostListener, ViewChildren, QueryList } from '@angular/core';
 
 import { BlogService } from '../../services/blog.service';
 
@@ -16,10 +16,10 @@ export class BlogComponent implements OnInit {
   @ViewChildren('item') postItems: QueryList<any>;
 
   constructor(
-    @Inject('BaseUrl') public BaseUrl,
+    @Inject('BaseUrl') public BaseUrl: String,
     private el: ElementRef,
     private blogService: BlogService) {
-   }
+  }
 
   ngOnInit() {
     this.blogService.getPosts().subscribe(
@@ -47,7 +47,7 @@ export class BlogComponent implements OnInit {
       return;
     }
     const items = this.el.nativeElement.querySelectorAll('.post');
-    items.forEach(element => {
+    items.forEach((element: HTMLElement) => {
       this.resizeGridItem(element);
     });
   }

@@ -24,10 +24,10 @@ export class BlogArticleComponent implements OnInit {
   icArrowRight: IconDefinition;
 
   constructor(
-    @Inject('BaseUrl') public BaseUrl,
+    @Inject('BaseUrl') public BaseUrl: String,
     private blogService: BlogService,
     private route: ActivatedRoute) {
-    }
+  }
 
   ngOnInit() {
     this.blogService.getPostIds().subscribe(
@@ -60,7 +60,7 @@ export class BlogArticleComponent implements OnInit {
   }
 
   private setPrevNext(currentId: number) {
-    const i =  this.postIds.indexOf(currentId);
+    const i = this.postIds.indexOf(currentId);
     this.next = this.postIds[(this.postIds.length + i - 1) % this.postIds.length];
     this.prev = this.postIds[(this.postIds.length + i + 1) % this.postIds.length];
   }

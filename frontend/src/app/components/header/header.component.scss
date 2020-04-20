@@ -1,4 +1,4 @@
-@import 'helper';
+@import "helper";
 
 .navbar {
   width: 100%;
@@ -20,7 +20,7 @@
   background-color: $white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   color: $black;
-  transition: background-color 200ms ease-in-out; 
+  transition: background-color 200ms ease-in-out;
 }
 
 .nav--gt-sm {
@@ -29,32 +29,37 @@
   }
 }
 
-.nav {
+.nav--mobile {
   width: 0;
   height: 100%;
   position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: $black;
   overflow-x: hidden;
   transition: width 500ms;
 }
 
-.nav--expand {
-  width: 100%;
-}
-
 .nav__links {
   width: 100%;
+  padding: 0;
   position: relative;
-  top: 25%;
-  text-align: center;
+  top: 50%;
   font-size: 1.777em;
   color: $white;
+  transform: translateY(-50%);
 
   & a {
+    padding: 1em 2em;
     display: block;
+    font-weight: 700;
+  }
+
+  & span {
+    margin-right: 2em;
+    font-size: 0.85rem;
+    opacity: 0.5;
   }
 }
 
@@ -62,35 +67,34 @@
   position: absolute;
   top: 5%;
   right: 5%;
-  font-weight: 700;
-  font-size: 3em;
+  font-weight: 500;
+  font-size: 2.125rem;
   color: $white;
 }
-
 
 .logo {
   color: inherit;
 }
 
-.sibling-fade { 
-  visibility: hidden; 
+.sibling-fade {
+  visibility: hidden;
 }
 
-.sibling-fade > * { 
-  visibility: visible; 
+.sibling-fade > * {
+  visibility: visible;
 }
 
-.sibling-fade > * { 
-  transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms; 
+.sibling-fade > * {
+  transition: opacity 150ms ease-out 100ms, transform 150ms ease-out 100ms;
 }
 
 .sibling-fade:hover > * {
-   opacity: 0.4; 
-   transform: scale(0.9); 
+  opacity: 0.4;
+  transform: scale(0.9);
 }
 
-.sibling-fade > *:hover { 
-  opacity: 1; 
-  transform: scale(1); 
-  transition-delay: 0ms, 0ms; 
+.sibling-fade > *:hover {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0ms, 0ms;
 }

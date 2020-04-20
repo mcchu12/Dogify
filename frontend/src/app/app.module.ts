@@ -31,7 +31,7 @@ import { BlogService } from './services/blog.service';
 import { SidenavToggleService } from './services/sidenav-toggle.service';
 
 // Others
-import { BaseUrl } from './shared/constants';
+import { environment } from '../environments/environment';
 import { CustomRouteReuse } from './shared/routeReuse';
 
 // FontAwesome
@@ -70,8 +70,8 @@ import { faFacebookSquare, faInstagram, faGooglePlusSquare, faYoutubeSquare, faT
     BreedClassificationService,
     BlogService,
     SidenavToggleService,
-    {provide: RouteReuseStrategy, useClass: CustomRouteReuse},
-    {provide: 'BaseUrl', useValue: BaseUrl},
+    { provide: RouteReuseStrategy, useClass: CustomRouteReuse },
+    { provide: 'BaseUrl', useValue: environment.BaseUrl },
   ],
   bootstrap: [AppComponent]
 })
@@ -84,4 +84,4 @@ export class AppModule {
     );
   }
 
- }
+}
