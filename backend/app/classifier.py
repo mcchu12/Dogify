@@ -1,42 +1,39 @@
-import numpy as np
-import pandas as pd
+from numpy import expand_dims, argmax
+from pandas import read_csv
 from keras.preprocessing import image
-from keras.applications.mobilenet import MobileNet, preprocess_input
-from keras.models import Sequential
-from keras.layers import Dense, GlobalAveragePooling2D
-
+from keras.applications.mobilenet import preprocess_input
+from keras.models import load_model
 
 class BreedClassifier:
 
     def __init__(self):
+        # self.model_loaded = False
+        self.initialize_model()
+
+    def initialize_model(self):
         self.load_model()
-        self.load_breeds_data()
+        self.load_data()
+        # self.model_loaded = True
 
     def load_model(self):
-        # Load full Keras model
-        self.dog_detector = MobileNet(
-            input_shape=(224, 224, 3), weights='imagenet')
-        self.dog_detector._make_predict_function()
-
-        # Load Keras models without top layer
-        self.base = MobileNet(input_shape=(224, 224, 3),
-                              weights='imagenet', include_top=False)
+        # Load Keras model without top layer
+        self.base = load_model('app/data/models/base.h5')
         self.base._make_predict_function()
 
+        # Load top of Keras model
+        self.top = load_model('app/data/models/top.h5')
+        self.top._make_predict_function()
+
         # Create top layer with pretrained weights
-        self.model = Sequential()
-        self.model.add(GlobalAveragePooling2D(input_shape=(7, 7, 1024)))
-        self.model.add(Dense(133, activation='softmax'))
-        self.model.load_weights('app/data/weights/weights.best.mobilenet.hdf5')
+        self.model = load_model('app/data/models/breed_model.h5')
         self.model._make_predict_function()
 
-    def load_breeds_data(self):
+    def load_data(self):
         # Load breeds data
-        self.dog_names = pd.read_csv('app/data/breeds.csv').name.tolist()
-        self.dog_temparement = pd.read_csv(
-            'app/data/breeds.csv').temperament.tolist()
+        self.dog_names = read_csv('app/data/breeds.csv').name.tolist()
+        self.dog_temparement = read_csv('app/data/breeds.csv').temperament.tolist()
         # Load imagenet classes
-        self.imagenet = pd.read_csv('app/data/imagenet.txt').classes.tolist()
+        self.imagenet = read_csv('app/data/imagenet.txt').classes.tolist()
 
     def path_to_tensor(self, img_path):
         # loads RGB image from path and resize to 224x224
@@ -44,14 +41,14 @@ class BreedClassifier:
         # convert image to 3D tensor with shape (224, 224, 3)
         x = image.img_to_array(img)
         # convert 3D tensor to 4D tensor with shape (1, 224, 224, 3)
-        input = np.expand_dims(x, axis=0)
+        input = expand_dims(x, axis=0)
         # Preprocess tensor to ready for prediction
         return preprocess_input(input)
 
-    def is_dog(self, tensor):
+    def is_dog(self, bottleneck):
         # Check if the image contains dog
-        predictions = self.dog_detector.predict(tensor)
-        index = np.argmax(predictions)
+        predictions = self.top.predict(bottleneck)
+        index = argmax(predictions)
         # From 151 to 268 are dog breeds according to imagenet label
         return ((index <= 268) & (index >= 151)), index
 
@@ -60,16 +57,19 @@ class BreedClassifier:
         return self.base.predict(tensor)
 
     def classify(self, img_path):
+        # if (not self.model_loaded):
+        #     self.initialize_model()
         # Convert path to tensor
         tensor = self.path_to_tensor(img_path)
-        is_dog, imagenet_index = self.is_dog(tensor)
+        # Extract bottleneck
+        bottleneck = self.extract_bottleneck(tensor)
+        # Check if image contain dog
+        is_dog, imagenet_index = self.is_dog(bottleneck)
         if is_dog:
-            # Extract bottleneck
-            bottleneck = self.extract_bottleneck(tensor)
             # Make prediction
             predictions = self.model.predict(bottleneck)
             # Get highest probability
-            index = np.argmax(predictions)
+            index = argmax(predictions)
             return self.dog_names[index], self.dog_temparement[index]
         else:
             return "No dog found", self.imagenet[imagenet_index]

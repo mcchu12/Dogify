@@ -12,11 +12,15 @@
   <div class="classification">
     <ng-container *ngIf="isProcessing">
       <div class="processing">
-        <p>Processing...</p>
-        <mat-progress-bar
-          mode="indeterminate"
+        <p>Thinking...</p>
+        <mat-progress-spinner
+          class="processing__spinner"
           color="accent"
-        ></mat-progress-bar>
+          mode="indeterminate"
+          diameter="50"
+          aria-label="classifying the image"
+        >
+        </mat-progress-spinner>
       </div>
     </ng-container>
 

@@ -1,5 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { SidenavToggleService } from './services/sidenav-toggle.service';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { SidenavToggleService } from './services/sidenav-toggle.service';
 })
 export class AppComponent {
 
-  @ViewChild('sidenav') sidenav;
+  @ViewChild('sidenav') sidenav: MatSidenav;
 
   title = 'dogify';
 

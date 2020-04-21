@@ -20,11 +20,11 @@ export class BreedsComponent implements OnInit {
   reader: FileReader;
 
   constructor(
-    @Inject('BaseUrl') private BaseUrl,
+    @Inject('BaseUrl') private BaseUrl: String,
     private breedService: BreedClassificationService) {
-      this.preview = this.BaseUrl + 'static/img/preview.jpg';
-      this.breed = { breed: 'Poodle', temparement: 'Active, Proud, Very Smart' };
-   }
+    this.preview = this.BaseUrl + 'static/img/preview.jpg';
+    this.breed = { breed: 'Poodle', temparement: 'Active, Proud, Very Smart' };
+  }
 
   ngOnInit() {
     this.icPlus = faPlus;

@@ -1,52 +1,56 @@
 @import "variables";
 
+.instruction {
+  margin: 0;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
 .classification {
   position: relative;
+
+  .processing {
+    width: 100%;
+    position: absolute;
+    top: 3em;
+    text-align: center;
+
+    &__spinner {
+      margin: 2em auto;
+    }
+  }
 }
 
 .result {
   opacity: 1;
-  transition: opacity 500ms;
+  transition: opacity 500ms ease-out;
+
+  .preview {
+    margin: 2em 0;
+    padding: 0 10vw;
+    min-height: 50vh;
+    background-size: cover;
+    background-position: center center;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+  }
+
+  .breed {
+    margin: 0 5vw 2em;
+    text-align: center;
+
+    p {
+      text-transform: capitalize;
+    }
+  }
 }
 
 .isProcessing {
   opacity: 0;
 }
 
-.processing {
-  width: 100%;
-  position: absolute;
-  top: 3em;
-  text-align: center;
-}
-
-.preview {
-  margin: 2em 0;
-  padding: 0 10vw;
-  min-height: 50vh;
-  background-size: cover;
-  background-position: center center;
-  background-origin: content-box;
-  background-repeat: no-repeat;
-}
-
-.breed {
-  margin: 0 5vw 2em;
-  text-align: center;
-
-  p {
-    text-transform: capitalize;
-  }
-}
-
 .fab {
   position: fixed;
-  bottom: 1em;
-  right: 1em;
-}
-
-.instruction {
-  margin: 0;
-  text-align: center;
-  font-size: 0.85rem;
+  bottom: 24px;
+  right: 24px;
 }
