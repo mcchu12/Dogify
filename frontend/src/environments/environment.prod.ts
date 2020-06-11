@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  BaseUrl: 'https://dogifyapi.herokuapp.com/'
+  BaseUrl: 'https://dogifi.herokuapp.com/'
 };

@@ -20,11 +20,11 @@ class BreedClassifier:
         self.base = load_model('app/data/models/base.h5')
         self.base._make_predict_function()
 
-        # Load top of Keras model
+        # Load top of Keras model use to classify all images
         self.top = load_model('app/data/models/top.h5')
         self.top._make_predict_function()
 
-        # Create top layer with pretrained weights
+        # Create top layer with pretrained weights used to classify dog breed
         self.model = load_model('app/data/models/breed_model.h5')
         self.model._make_predict_function()
 
